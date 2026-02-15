@@ -1,0 +1,177 @@
+irst<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sílabas Danzantes | Juego Educativo</title>
+  
+  <meta name="description" content="Juego educativo para aprender conciencia fonológica">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="app-container">
+    
+    <!-- HEADER COMPACTO -->
+    <header class="game-header">
+      <div class="header-content">
+        <h1 class="game-title">🎯 Sílabas Danzantes</h1>
+        
+        <div class="session-info">
+          <div class="language-selector">
+            <button id="langBtnEs" class="lang-btn lang-btn--active">🇪🇸</button>
+            <button id="langBtnEn" class="lang-btn">🇬🇧</button>
+          </div>
+          
+          <div class="score-display">
+            <span>⭐</span>
+            <span id="scoreValue" class="score-value">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="game-main">
+      
+      <!-- PANTALLA DE INICIO -->
+      <section id="startScreen" class="screen screen--active">
+        <div class="start-container">
+          <h2 class="start-title">¡Bienvenido! 👋</h2>
+          
+          <div class="instructions">
+            <h3>¿Cómo jugar?</h3>
+            <ol>
+              <li>🔊 Escucha la palabra</li>
+              <li>👆 Toca las sílabas en orden</li>
+              <li>⭐ ¡Gana puntos!</li>
+            </ol>
+          </div>
+          
+          <div class="difficulty-selector">
+            <label>Elige el nivel:</label>
+            <select id="difficultySelect" class="difficulty-select">
+              <option value="1">🟢 Fácil</option>
+              <option value="2" selected>🟡 Normal</option>
+              <option value="3">🔴 Difícil</option>
+            </select>
+          </div>
+          
+          <button id="startBtn" class="btn btn--primary btn--large">
+            ▶️ COMENZAR
+          </button>
+        </div>
+      </section>
+
+      <!-- PANTALLA DE JUEGO - OPTIMIZADA SIN SCROLL -->
+      <section id="gameScreen" class="screen">
+        <div class="game-container-compact">
+          
+          <!-- PROGRESO -->
+          <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <p class="progress-text">
+            <strong><span id="questionNumber">1</span> de <span id="totalQuestions">10</span></strong>
+          </p>
+          
+          <!-- LAYOUT EN GRID: TODO VISIBLE -->
+          <div class="game-grid">
+            
+            <!-- COLUMNA IZQUIERDA: IMAGEN + AUDIO -->
+            <div class="stimulus-column">
+              <img id="stimulusImage" src="" alt="" class="stimulus-image-compact">
+              <p id="stimulusWord" class="stimulus-word-compact"></p>
+              <button id="playAudioBtn" class="btn btn--audio">
+                🔊 ESCUCHAR
+              </button>
+            </div>
+            
+            <!-- COLUMNA DERECHA: SÍLABAS + RESPUESTA -->
+            <div class="response-column">
+              
+              <!-- ÁREA DE RESPUESTA (ARRIBA) -->
+              <div class="selected-area-compact">
+                <p class="selected-label">✅ Tu respuesta:</p>
+                <div id="selectedSyllables" class="selected-syllables">
+                  <span class="placeholder-text">Toca las sílabas →</span>
+                </div>
+              </div>
+              
+              <!-- OPCIONES DE SÍLABAS -->
+              <div class="syllable-options-compact" id="syllableOptions">
+                <!-- Generadas dinámicamente -->
+              </div>
+              
+              <!-- BOTONES DE CONTROL (GRANDES) -->
+              <div class="control-buttons-compact">
+                <button id="undoBtn" class="btn btn--undo">
+                  ↩️ BORRAR
+                </button>
+                <button id="checkBtn" class="btn btn--check">
+                  ✔️ VERIFICAR
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANTALLA DE FEEDBACK -->
+      <section id="feedbackScreen" class="screen">
+        <div class="feedback-container">
+          <div id="feedbackContent" class="feedback-content"></div>
+          <button id="nextBtn" class="btn btn--primary btn--large">
+            ➡️ SIGUIENTE
+          </button>
+        </div>
+      </section>
+
+      <!-- PANTALLA FINAL -->
+      <section id="endScreen" class="screen">
+        <div class="end-container">
+          <h2 class="end-title">🎉 ¡Terminaste!</h2>
+          
+          <div class="end-stats">
+            <div class="stat">
+              <span class="stat-label">Aciertos:</span>
+              <span id="finalAccuracy" class="stat-value">0%</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Puntos:</span>
+              <span id="finalScore" class="stat-value">0</span>
+            </div>
+          </div>
+          
+          <div class="end-message" id="endMessage"></div>
+          
+          <button id="restartBtn" class="btn btn--primary btn--large">
+            🔄 JUGAR DE NUEVO
+          </button>
+        </div>
+      </section>
+
+    </main>
+    
+  </div>
+
+  <audio id="audioElement" preload="auto"></audio>
+  <div id="loadingSpinner" class="loading-spinner" hidden>
+    <div class="spinner"></div>
+  </div>
+<footer class="game-footer"> <p>Juego desarrollado para investigación educativa | BIU Maestría 2026</p> </footer> 
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
