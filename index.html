@@ -1,31 +1,132 @@
-irst<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sílabas Danzantes | Juego Educativo</title>
+  <title>Sílabas Danzantes | Juego Educativo Bilingüe</title>
   
-  <meta name="description" content="Juego educativo para aprender conciencia fonológica">
+  <meta name="description" content="Juego educativo neuroeducativo para automatización de lectoescritura bilingüe">
   <meta name="robots" content="noindex, nofollow">
   
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* ===== ESTILOS ADICIONALES PARA FORMULARIO EXTENDIDO ===== */
+    .form-section {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid #4CAF50;
+    }
+    
+    .form-section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .form-help {
+      font-size: 12px;
+      color: #666;
+      font-style: italic;
+      margin-top: 5px;
+    }
+    
+    .session-type-selector {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .session-type-btn {
+      flex: 1;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .session-type-btn:hover {
+      border-color: #4CAF50;
+      transform: translateY(-2px);
+    }
+    
+    .session-type-btn.active {
+      border-color: #4CAF50;
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+    
+    .teacher-note {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 15px 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    
+    .teacher-note strong {
+      color: #856404;
+    }
+    
+    .range-input-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .range-input {
+      flex: 1;
+    }
+    
+    .range-value {
+      min-width: 60px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #4CAF50;
+    }
+  </style>
 </head>
 
 <body>
   <div class="app-container">
     
-    <!-- HEADER COMPACTO -->
+    <!-- HEADER -->
     <header class="game-header">
       <div class="header-content">
         <h1 class="game-title">🎯 Sílabas Danzantes</h1>
         
         <div class="session-info">
-          <div class="language-selector">
-            <button id="langBtnEs" class="lang-btn lang-btn--active">🇪🇸</button>
-            <button id="langBtnEn" class="lang-btn">🇬🇧</button>
+          <!-- IDIOMA BLOQUEADO HASTA INICIAR SESIÓN -->
+          <div class="language-selector" id="languageSelector" style="opacity: 0.5; pointer-events: none;">
+            <button id="langBtnEs" class="lang-btn lang-btn--active" disabled>🇪🇸</button>
+            <button id="langBtnEn" class="lang-btn" disabled>🇬🇧</button>
           </div>
           
           <div class="score-display">
@@ -38,40 +139,353 @@ irst<!DOCTYPE html>
 
     <main class="game-main">
       
-      <!-- PANTALLA DE INICIO -->
+      <!-- ========================================== -->
+      <!-- PANTALLA 1: FORMULARIO PARA ESTUDIANTE -->
+      <!-- ========================================== -->
       <section id="startScreen" class="screen screen--active">
         <div class="start-container">
-          <h2 class="start-title">¡Bienvenido! 👋</h2>
           
-          <div class="instructions">
-            <h3>¿Cómo jugar?</h3>
-            <ol>
-              <li>🔊 Escucha la palabra</li>
-              <li>👆 Toca las sílabas en orden</li>
-              <li>⭐ ¡Gana puntos!</li>
-            </ol>
+          <!-- NOTA PARA PROFESORA -->
+          <div class="teacher-note">
+            <strong>👩‍🏫 INSTRUCCIONES PARA PROFESORA AUXILIAR:</strong><br>
+            Complete este formulario CON el estudiante antes de iniciar la sesión.<br>
+            Los datos demográficos (NSE, exposición, ADHD) ya deben estar registrados en Firebase.<br>
+            Seleccione el TIPO DE SESIÓN y el IDIOMA antes de comenzar.
           </div>
           
-          <div class="difficulty-selector">
-            <label>Elige el nivel:</label>
-            <select id="difficultySelect" class="difficulty-select">
-              <option value="1">🟢 Fácil</option>
-              <option value="2" selected>🟡 Normal</option>
-              <option value="3">🔴 Difícil</option>
-            </select>
-          </div>
+          <h2 class="start-title">¡Hola! 👋</h2>
+          <p class="start-subtitle">Vamos a jugar con palabras</p>
           
-          <button id="startBtn" class="btn btn--primary btn--large">
-            ▶️ COMENZAR
-          </button>
+          <!-- ========================================== -->
+          <!-- FORMULARIO EXTENDIDO -->
+          <!-- ========================================== -->
+          <form id="participantForm" class="participant-form">
+            
+            <!-- ========================================== -->
+            <!-- SECCIÓN 1: IDENTIFICACIÓN DEL ESTUDIANTE -->
+            <!-- ========================================== -->
+            <div class="form-section">
+              <h3 class="form-section-title">
+                <span>📋</span> Datos del Estudiante
+              </h3>
+              
+              <!-- CÓDIGO ESTUDIANTE -->
+              <div class="form-group">
+                <label for="studentCode">
+                  <span class="form-icon">🎫</span> Código de estudiante *
+                </label>
+                <input 
+                  type="text" 
+                  id="studentCode" 
+                  class="form-input"
+                  placeholder="Ejemplo: EST001"
+                  required
+                  maxlength="20"
+                  pattern="[A-Z]{3}[0-9]{3}"
+                  title="Formato: EST001"
+                >
+                <p class="form-help">Formato: EST + 3 dígitos (ej: EST001, EST025)</p>
+              </div>
+              
+              <!-- NOMBRE -->
+              <div class="form-group">
+                <label for="participantName">
+                  <span class="form-icon">😊</span> Nombre completo *
+                </label>
+                <input 
+                  type="text" 
+                  id="participantName" 
+                  class="form-input"
+                  placeholder="Nombre y apellido"
+                  required
+                  maxlength="50"
+                >
+              </div>
+              
+              <!-- EDAD (AÑOS Y MESES) -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="participantAge">
+                    <span class="form-icon">🎂</span> Edad (años) *
+                  </label>
+                  <select id="participantAge" class="form-select" required>
+                    <option value="">Seleccione</option>
+                    <option value="4">4 años</option>
+                    <option value="5">5 años</option>
+                    <option value="6">6 años</option>
+                    <option value="7">7 años</option>
+                    <option value="8">8 años</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="participantAgeMonths">
+                    <span class="form-icon">📅</span> Meses adicionales *
+                  </label>
+                  <select id="participantAgeMonths" class="form-select" required>
+                    <option value="">Seleccione</option>
+                    <option value="0">0 meses</option>
+                    <option value="1">1 mes</option>
+                    <option value="2">2 meses</option>
+                    <option value="3">3 meses</option>
+                    <option value="4">4 meses</option>
+                    <option value="5">5 meses</option>
+                    <option value="6">6 meses</option>
+                    <option value="7">7 meses</option>
+                    <option value="8">8 meses</option>
+                    <option value="9">9 meses</option>
+                    <option value="10">10 meses</option>
+                    <option value="11">11 meses</option>
+                  </select>
+                  <p class="form-help">Ejemplo: Si tiene 6 años y 4 meses → 6 años + 4 meses</p>
+                </div>
+              </div>
+              
+              <!-- GÉNERO -->
+              <div class="form-group">
+                <label>
+                  <span class="form-icon">👤</span> Género *
+                </label>
+                <div class="gender-buttons">
+                  <button type="button" class="gender-btn" data-gender="Masculino">👦 Niño</button>
+                  <button type="button" class="gender-btn" data-gender="Femenino">👧 Niña</button>
+                  <button type="button" class="gender-btn" data-gender="Otro">😊 Otro</button>
+                </div>
+                <input type="hidden" id="participantGender" value="">
+              </div>
+            </div>
+            
+            <!-- ========================================== -->
+            <!-- SECCIÓN 2: CONFIGURACIÓN DE SESIÓN -->
+            <!-- ========================================== -->
+            <div class="form-section">
+              <h3 class="form-section-title">
+                <span>⚙️</span> Configuración de la Sesión
+              </h3>
+              
+              <!-- TIPO DE SESIÓN -->
+              <div class="form-group">
+                <label>
+                  <span class="form-icon">📊</span> Tipo de sesión *
+                </label>
+                <div class="session-type-selector">
+                  <button type="button" class="session-type-btn" data-session-type="pre-test">
+                    📝 PRE-TEST<br>
+                    <small>(Semana 1)</small>
+                  </button>
+                  <button type="button" class="session-type-btn active" data-session-type="intervention">
+                    🎮 INTERVENCIÓN<br>
+                    <small>(Semanas 2-9)</small>
+                  </button>
+                  <button type="button" class="session-type-btn" data-session-type="post-test">
+                    ✅ POST-TEST<br>
+                    <small>(Semana 10)</small>
+                  </button>
+                </div>
+                <input type="hidden" id="sessionType" value="intervention">
+              </div>
+              
+              <!-- SEMANA DE INTERVENCIÓN -->
+              <div class="form-group" id="weekNumberGroup">
+                <label for="weekNumber">
+                  <span class="form-icon">📅</span> Semana de intervención *
+                </label>
+                <select id="weekNumber" class="form-select" required>
+                  <option value="">Seleccione semana</option>
+                  <option value="1">Semana 1 - Pre-test</option>
+                  <option value="2">Semana 2 - Juego 1</option>
+                  <option value="3">Semana 3 - Juego 2</option>
+                  <option value="4">Semana 4 - Juego 3</option>
+                  <option value="5">Semana 5 - Juego 4</option>
+                  <option value="6">Semana 6 - J1+J2 (ES)</option>
+                  <option value="7">Semana 7 - J1+J2 (EN)</option>
+                  <option value="8">Semana 8 - J3+J4 (ES)</option>
+                  <option value="9">Semana 9 - J3+J4 (EN)</option>
+                  <option value="10">Semana 10 - Post-test</option>
+                </select>
+              </div>
+              
+              <!-- IDIOMA DE LA SESIÓN -->
+              <div class="form-group">
+                <label>
+                  <span class="form-icon">🌐</span> Idioma de esta sesión *
+                </label>
+                <div class="session-type-selector">
+                  <button type="button" class="session-type-btn active" data-language="es">
+                    🇪🇸 ESPAÑOL<br>
+                    <small>(L1 - Idioma primario)</small>
+                  </button>
+                  <button type="button" class="session-type-btn" data-language="en">
+                    🇬🇧 INGLÉS<br>
+                    <small>(L2 - Idioma adicional)</small>
+                  </button>
+                </div>
+                <input type="hidden" id="sessionLanguage" value="es">
+                <p class="form-help">
+                  ⚠️ <strong>IMPORTANTE:</strong> Cada estudiante debe completar 2 sesiones: una en español y otra en inglés
+                </p>
+              </div>
+              
+              <!-- NIVEL DE DIFICULTAD -->
+              <div class="form-group">
+                <label for="difficultySelect">
+                  <span class="form-icon">🎯</span> Nivel de dificultad *
+                </label>
+                <select id="difficultySelect" class="form-select">
+                  <option value="1">🟢 Fácil (1-2 sílabas)</option>
+                  <option value="2" selected>🟡 Normal (3 sílabas)</option>
+                  <option value="3">🔴 Difícil (4+ sílabas)</option>
+                </select>
+                <p class="form-help">Ajustar según rendimiento previo del estudiante</p>
+              </div>
+            </div>
+            
+            <!-- ========================================== -->
+            <!-- SECCIÓN 3: DATOS DEMOGRÁFICOS (OPCIONAL - YA EN FIREBASE) -->
+            <!-- ========================================== -->
+            <div class="form-section" style="border-left-color: #2196F3;">
+              <h3 class="form-section-title">
+                <span>📈</span> Datos Demográficos (Opcional - Solo si es nuevo estudiante)
+              </h3>
+              
+              <p style="font-size: 13px; color: #666; margin-bottom: 15px;">
+                ℹ️ Estos datos normalmente ya están en el sistema. Solo completar si es la primera sesión del estudiante.
+              </p>
+              
+              <!-- IDIOMA PRIMARIO (L1) -->
+              <div class="form-group">
+                <label for="primaryLanguage">
+                  <span class="form-icon">🗣️</span> Idioma primario del estudiante (L1)
+                </label>
+                <select id="primaryLanguage" class="form-select">
+                  <option value="">No especificado</option>
+                  <option value="Español" selected>Español</option>
+                  <option value="Inglés">Inglés</option>
+                </select>
+                <p class="form-help">¿Qué idioma habla principalmente en casa?</p>
+              </div>
+              
+              <!-- IDIOMA DEL HOGAR -->
+              <div class="form-group">
+                <label for="homeLanguage">
+                  <span class="form-icon">🏠</span> Idioma del hogar
+                </label>
+                <select id="homeLanguage" class="form-select">
+                  <option value="">No especificado</option>
+                  <option value="Monolingüe" selected>Monolingüe (solo español)</option>
+                  <option value="Bilingüe">Bilingüe (español e inglés)</option>
+                </select>
+              </div>
+              
+              <!-- NIVEL SOCIOECONÓMICO -->
+              <div class="form-group">
+                <label for="nseLevel">
+                  <span class="form-icon">💰</span> Nivel Socioeconómico (NSE)
+                </label>
+                <select id="nseLevel" class="form-select">
+                  <option value="">No especificado</option>
+                  <option value="Bajo">Bajo</option>
+                  <option value="Medio" selected>Medio</option>
+                  <option value="Alto">Alto</option>
+                </select>
+                <p class="form-help">Información proporcionada por la institución</p>
+              </div>
+              
+              <!-- EXPOSICIÓN A LECTURA -->
+              <div class="form-group">
+                <label for="readingHours">
+                  <span class="form-icon">📚</span> Exposición a lectura (horas semanales)
+                </label>
+                <div class="range-input-container">
+                  <input 
+                    type="range" 
+                    id="readingHours" 
+                    class="range-input"
+                    min="0" 
+                    max="14" 
+                    value="0" 
+                    step="1"
+                  >
+                  <span id="readingHoursValue" class="range-value">0 hrs</span>
+                </div>
+                <p class="form-help">¿Cuántas horas lee en casa por semana?</p>
+              </div>
+              
+              <!-- EXPOSICIÓN A PANTALLAS -->
+              <div class="form-group">
+                <label for="screenHours">
+                  <span class="form-icon">📱</span> Exposición a pantallas (horas semanales)
+                </label>
+                <div class="range-input-container">
+                  <input 
+                    type="range" 
+                    id="screenHours" 
+                    class="range-input"
+                    min="0" 
+                    max="30" 
+                    value="0" 
+                    step="1"
+                  >
+                  <span id="screenHoursValue" class="range-value">0 hrs</span>
+                </div>
+                <p class="form-help">Tablets, TV, videojuegos, etc.</p>
+              </div>
+              
+              <!-- SCREENING ADHD -->
+              <div class="form-group">
+                <label for="adhdScreening">
+                  <span class="form-icon">🧠</span> Screening ADHD (SNAP-IV)
+                </label>
+                <select id="adhdScreening" class="form-select">
+                  <option value="">No evaluado</option>
+                  <option value="Negativo" selected>Negativo</option>
+                  <option value="Positivo">Positivo</option>
+                </select>
+                <p class="form-help">Basado en evaluación SNAP-IV previa</p>
+              </div>
+            </div>
+            
+            <!-- ========================================== -->
+            <!-- SECCIÓN 4: INSTRUCCIONES -->
+            <!-- ========================================== -->
+            <div class="instructions">
+              <h3>¿Cómo jugar? 🎮</h3>
+              <ol>
+                <li>🔊 Escucha la palabra con atención</li>
+                <li>🖼️ Mira la imagen que aparece</li>
+                <li>👆 Toca las sílabas en el orden correcto</li>
+                <li>✅ Presiona VERIFICAR para revisar tu respuesta</li>
+                <li>⭐ ¡Gana puntos por cada respuesta correcta!</li>
+              </ol>
+              <p style="margin-top: 10px; font-size: 13px; color: #666;">
+                💡 <strong>Tip:</strong> Si te equivocas, usa el botón BORRAR para intentar de nuevo.
+              </p>
+            </div>
+            
+            <!-- BOTÓN INICIAR -->
+            <button type="submit" class="btn btn--primary btn--large">
+              🚀 ¡COMENZAR SESIÓN!
+            </button>
+            
+            <p class="privacy-note">
+              🔒 Datos protegidos según normativa de investigación educativa
+            </p>
+          </form>
         </div>
       </section>
 
-      <!-- PANTALLA DE JUEGO - OPTIMIZADA SIN SCROLL -->
+      <!-- ========================================== -->
+      <!-- PANTALLA 2: JUEGO -->
+      <!-- ========================================== -->
       <section id="gameScreen" class="screen">
         <div class="game-container-compact">
           
-          <!-- PROGRESO -->
+          <!-- INDICADOR DE SESIÓN ACTIVA -->
+          <div style="background: #e3f2fd; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-size: 13px;">
+            <strong>Sesión activa:</strong> 
+            <span id="activeSessionInfo">Estudiante: [Nombre] | Idioma: [ES/EN] | Semana: [X]</span>
+          </div>
+          
           <div class="progress-bar">
             <div id="progressFill" class="progress-fill"></div>
           </div>
@@ -79,10 +493,8 @@ irst<!DOCTYPE html>
             <strong><span id="questionNumber">1</span> de <span id="totalQuestions">10</span></strong>
           </p>
           
-          <!-- LAYOUT EN GRID: TODO VISIBLE -->
           <div class="game-grid">
             
-            <!-- COLUMNA IZQUIERDA: IMAGEN + AUDIO -->
             <div class="stimulus-column">
               <img id="stimulusImage" src="" alt="" class="stimulus-image-compact">
               <p id="stimulusWord" class="stimulus-word-compact"></p>
@@ -91,10 +503,8 @@ irst<!DOCTYPE html>
               </button>
             </div>
             
-            <!-- COLUMNA DERECHA: SÍLABAS + RESPUESTA -->
             <div class="response-column">
               
-              <!-- ÁREA DE RESPUESTA (ARRIBA) -->
               <div class="selected-area-compact">
                 <p class="selected-label">✅ Tu respuesta:</p>
                 <div id="selectedSyllables" class="selected-syllables">
@@ -102,26 +512,20 @@ irst<!DOCTYPE html>
                 </div>
               </div>
               
-              <!-- OPCIONES DE SÍLABAS -->
-              <div class="syllable-options-compact" id="syllableOptions">
-                <!-- Generadas dinámicamente -->
-              </div>
+              <div class="syllable-options-compact" id="syllableOptions"></div>
               
-              <!-- BOTONES DE CONTROL (GRANDES) -->
               <div class="control-buttons-compact">
-                <button id="undoBtn" class="btn btn--undo">
-                  ↩️ BORRAR
-                </button>
-                <button id="checkBtn" class="btn btn--check">
-                  ✔️ VERIFICAR
-                </button>
+                <button id="undoBtn" class="btn btn--undo">↩️ BORRAR</button>
+                <button id="checkBtn" class="btn btn--check">✔️ VERIFICAR</button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PANTALLA DE FEEDBACK -->
+      <!-- ========================================== -->
+      <!-- PANTALLA 3: FEEDBACK -->
+      <!-- ========================================== -->
       <section id="feedbackScreen" class="screen">
         <div class="feedback-container">
           <div id="feedbackContent" class="feedback-content"></div>
@@ -131,26 +535,51 @@ irst<!DOCTYPE html>
         </div>
       </section>
 
-      <!-- PANTALLA FINAL -->
+      <!-- ========================================== -->
+      <!-- PANTALLA 4: RESULTADOS -->
+      <!-- ========================================== -->
       <section id="endScreen" class="screen">
         <div class="end-container">
-          <h2 class="end-title">🎉 ¡Terminaste!</h2>
+          <h2 class="end-title">🎉 ¡Sesión completada!</h2>
+          
+          <!-- RESUMEN DE SESIÓN -->
+          <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <p style="margin: 0; font-size: 14px;">
+              <strong>Estudiante:</strong> <span id="summaryStudentName">-</span><br>
+              <strong>Idioma de sesión:</strong> <span id="summaryLanguage">-</span><br>
+              <strong>Semana:</strong> <span id="summaryWeek">-</span><br>
+              <strong>Tipo:</strong> <span id="summaryType">-</span>
+            </p>
+          </div>
           
           <div class="end-stats">
             <div class="stat">
-              <span class="stat-label">Aciertos:</span>
+              <span class="stat-label">Precisión:</span>
               <span id="finalAccuracy" class="stat-value">0%</span>
             </div>
             <div class="stat">
-              <span class="stat-label">Puntos:</span>
+              <span class="stat-label">Tiempo promedio:</span>
+              <span id="finalAvgTime" class="stat-value">0 ms</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Puntos totales:</span>
               <span id="finalScore" class="stat-value">0</span>
             </div>
           </div>
           
           <div class="end-message" id="endMessage"></div>
           
+          <!-- INSTRUCCIONES PARA PROFESORA -->
+          <div class="teacher-note" style="margin-top: 20px;">
+            <strong>👩‍🏫 SIGUIENTE PASO:</strong><br>
+            • Si es PRE-TEST o POST-TEST: Registrar datos en hoja de control<br>
+            • Si es INTERVENCIÓN: Estudiante puede regresar a clase<br>
+            • Verificar que datos se guardaron en Firebase<br>
+            • Preparar estación para siguiente estudiante
+          </div>
+          
           <button id="restartBtn" class="btn btn--primary btn--large">
-            🔄 JUGAR DE NUEVO
+            🔄 NUEVA SESIÓN (Otro estudiante)
           </button>
         </div>
       </section>
@@ -160,10 +589,22 @@ irst<!DOCTYPE html>
   </div>
 
   <audio id="audioElement" preload="auto"></audio>
+  
   <div id="loadingSpinner" class="loading-spinner" hidden>
     <div class="spinner"></div>
+    <p style="margin-top: 10px; color: #666;">Cargando datos...</p>
   </div>
-<footer class="game-footer"> <p>Juego desarrollado para investigación educativa | BIU Maestría 2026</p> </footer> 
+
+  <footer class="game-footer">
+    <p>
+      Juego Neuroeducativo Bilingüe | Investigación Maestría BIU 2026<br>
+      <small>Diseño experimental: Pre-test/Post-test | Intervención 8 semanas</small>
+    </p>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- SCRIPTS DE FIREBASE -->
+  <!-- ========================================== -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
@@ -173,5 +614,109 @@ irst<!DOCTYPE html>
   <script src="js/utils.js"></script>
   <script src="js/game.js"></script>
   <script src="js/main.js"></script>
+  
+  <!-- ========================================== -->
+  <!-- SCRIPTS DE INTERACTIVIDAD DEL FORMULARIO -->
+  <!-- ========================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // ===== BOTONES DE GÉNERO =====
+      const genderButtons = document.querySelectorAll('.gender-btn');
+      const genderInput = document.getElementById('participantGender');
+      
+      genderButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          genderButtons.forEach(b => b.classList.remove('gender-btn--active'));
+          btn.classList.add('gender-btn--active');
+          genderInput.value = btn.dataset.gender;
+        });
+      });
+      
+      // ===== BOTONES DE TIPO DE SESIÓN =====
+      const sessionTypeButtons = document.querySelectorAll('[data-session-type]');
+      const sessionTypeInput = document.getElementById('sessionType');
+      const weekNumberGroup = document.getElementById('weekNumberGroup');
+      const weekNumberSelect = document.getElementById('weekNumber');
+      
+      sessionTypeButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          sessionTypeButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const type = btn.dataset.sessionType;
+          sessionTypeInput.value = type;
+          
+          // Autoseleccionar semana según tipo
+          if (type === 'pre-test') {
+            weekNumberSelect.value = '1';
+          } else if (type === 'post-test') {
+            weekNumberSelect.value = '10';
+          }
+        });
+      });
+      
+      // ===== BOTONES DE IDIOMA DE SESIÓN =====
+      const languageButtons = document.querySelectorAll('[data-language]');
+      const sessionLanguageInput = document.getElementById('sessionLanguage');
+      
+      languageButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          languageButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          sessionLanguageInput.value = btn.dataset.language;
+        });
+      });
+      
+      // ===== SLIDERS DE EXPOSICIÓN =====
+      const readingHoursInput = document.getElementById('readingHours');
+      const readingHoursValue = document.getElementById('readingHoursValue');
+      const screenHoursInput = document.getElementById('screenHours');
+      const screenHoursValue = document.getElementById('screenHoursValue');
+      
+      readingHoursInput.addEventListener('input', (e) => {
+        readingHoursValue.textContent = `${e.target.value} hrs`;
+      });
+      
+      screenHoursInput.addEventListener('input', (e) => {
+        screenHoursValue.textContent = `${e.target.value} hrs`;
+      });
+      
+      // ===== VALIDACIÓN DE CÓDIGO DE ESTUDIANTE =====
+      const studentCodeInput = document.getElementById('studentCode');
+      
+      studentCodeInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.toUpperCase();
+      });
+      
+      // ===== AUTO-GUARDAR DATOS EN LOCALSTORAGE (por si se cierra accidentalmente) =====
+      const form = document.getElementById('participantForm');
+      const inputs = form.querySelectorAll('input, select');
+      
+      inputs.forEach(input => {
+        input.addEventListener('change', () => {
+          localStorage.setItem(`backup_${input.id}`, input.value);
+        });
+      });
+      
+      // Restaurar datos si existen
+      inputs.forEach(input => {
+        const saved = localStorage.getItem(`backup_${input.id}`);
+        if (saved && !input.value) {
+          input.value = saved;
+        }
+      });
+      
+      // Limpiar backup después de enviar formulario
+      form.addEventListener('submit', () => {
+        inputs.forEach(input => {
+          localStorage.removeItem(`backup_${input.id}`);
+        });
+      });
+      
+    });
+  </script>
 </body>
 </html>

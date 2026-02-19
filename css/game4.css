@@ -1,0 +1,635 @@
+/* =============================================
+   ESTILOS ESPECÍFICOS - JUEGO 4: RIMAS DIVERTIDAS
+   ============================================= */
+
+/* TEMA DEL JUEGO 4 (Color verde) */
+.game-header--game4 {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+}
+
+.btn-start--game4 {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  animation: pulse 2s infinite;
+}
+
+.btn-start--game4:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 10px 25px rgba(76, 175, 80, 0.6);
+}
+
+/* =============================================
+   FORMULARIO DE CÓDIGO DE ESTUDIANTE
+   ============================================= */
+
+.student-code-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-input--large {
+  font-size: 24px !important;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* =============================================
+   PROGRESO DEL JUEGO
+   ============================================= */
+
+.progress-container {
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #45a049);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+/* =============================================
+   PALABRA OBJETIVO (TARGET WORD)
+   ============================================= */
+
+.target-word-section {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+}
+
+.target-label {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 15px;
+}
+
+.target-word-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.target-word {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1B5E20;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.btn-play-target {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.btn-play-target:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 6px 15px rgba(76, 175, 80, 0.5);
+}
+
+.btn-play-target:active {
+  transform: scale(0.95);
+}
+
+/* =============================================
+   OPCIONES DE RESPUESTA
+   ============================================= */
+
+.options-section {
+  margin-top: 30px;
+}
+
+.options-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.option-card {
+  background: white;
+  border: 4px solid #4CAF50;
+  border-radius: 15px;
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.option-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.option-card:hover::before {
+  left: 100%;
+}
+
+.option-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+  border-color: #45a049;
+}
+
+.option-card:active {
+  transform: translateY(0);
+}
+
+.option-word {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1B5E20;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.option-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.option-card--selected {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  border-color: #2E7D32;
+  transform: scale(1.05);
+}
+
+.option-card--selected .option-word {
+  color: white;
+}
+
+.option-card--correct {
+  background: linear-gradient(135deg, #66BB6A 0%, #4CAF50 100%);
+  border-color: #2E7D32;
+  animation: correctPulse 0.5s ease;
+}
+
+.option-card--correct .option-word {
+  color: white;
+}
+
+@keyframes correctPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.option-card--wrong {
+  background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);
+  border-color: #C62828;
+  animation: shake 0.5s ease;
+}
+
+.option-card--wrong .option-word {
+  color: white;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+.option-card--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =============================================
+   FEEDBACK
+   ============================================= */
+
+.feedback-content {
+  text-align: center;
+  padding: 30px;
+}
+
+.feedback-icon {
+  font-size: 100px;
+  margin-bottom: 20px;
+  animation: bounce 1s infinite;
+}
+
+.feedback-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--color-dark);
+}
+
+.feedback-message {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: var(--color-gray);
+}
+
+.feedback-rhyme-explanation {
+  background: #E8F5E9;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+  border-left: 5px solid #4CAF50;
+}
+
+.feedback-rhyme-explanation p {
+  font-size: 18px;
+  color: #2E7D32;
+  margin: 5px 0;
+}
+
+.feedback-points {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4CAF50;
+}
+
+.btn-next {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-main);
+}
+
+.btn-next:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* =============================================
+   PANTALLA FINAL - CELEBRACIÓN
+   ============================================= */
+
+.final-celebration {
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  padding: 30px;
+  border-radius: 20px;
+  margin: 30px 0;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+}
+
+.celebration-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1B5E20;
+  margin-bottom: 15px;
+}
+
+.celebration-text {
+  font-size: 20px;
+  color: #2E7D32;
+  margin-bottom: 20px;
+}
+
+.games-completed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.game-badge {
+  background: white;
+  color: #2E7D32;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 2px solid #4CAF50;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+/* =============================================
+   RESPONSIVE - MÓVIL
+   ============================================= */
+
+@media (max-width: 768px) {
+  .target-word {
+    font-size: 36px;
+  }
+  
+  .btn-play-target {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+  
+  .options-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .option-word {
+    font-size: 28px;
+  }
+  
+  .option-icon {
+    font-size: 32px;
+  }
+  
+  .target-label,
+  .options-label {
+    font-size: 16px;
+  }
+  
+  .feedback-icon {
+    font-size: 80px;
+  }
+  
+  .feedback-title {
+    font-size: 28px;
+  }
+  
+  .feedback-message {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .target-word-section {
+    padding: 20px;
+  }
+  
+  .target-word {
+    font-size: 28px;
+  }
+  
+  .btn-play-target {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+  
+  .option-card {
+    padding: 20px;
+  }
+  
+  .option-word {
+    font-size: 24px;
+  }
+  
+  .option-icon {
+    font-size: 28px;
+  }
+  
+  .feedback-icon {
+    font-size: 60px;
+  }
+  
+  .feedback-title {
+    font-size: 24px;
+  }
+  
+  .feedback-message {
+    font-size: 16px;
+  }
+  
+  .celebration-title {
+    font-size: 24px;
+  }
+  
+  .celebration-text {
+    font-size: 16px;
+  }
+  
+  .game-badge {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+}
+
+/* =============================================
+   LANDSCAPE MOBILE
+   ============================================= */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .target-word-section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .target-word {
+    font-size: 32px;
+  }
+  
+  .options-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .option-card {
+    padding: 15px;
+  }
+  
+  .option-word {
+    font-size: 20px;
+  }
+  
+  .option-icon {
+    font-size: 24px;
+  }
+}
+
+/* =============================================
+   ACCESIBILIDAD
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .target-word,
+  .option-card,
+  .option-card--correct,
+  .option-card--wrong,
+  .feedback-icon {
+    animation: none !important;
+  }
+  
+  .option-card::before {
+    display: none;
+  }
+}
+
+/* =============================================
+   DARK MODE
+   ============================================= */
+
+@media (prefers-color-scheme: dark) {
+  .target-word-section {
+    background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+  }
+  
+  .target-label {
+    color: #A5D6A7;
+  }
+  
+  .target-word {
+    color: #E8F5E9;
+  }
+  
+  .option-card {
+    background: #1E1E1E;
+    border-color: #4CAF50;
+  }
+  
+  .option-word {
+    color: #A5D6A7;
+  }
+  
+  .final-celebration {
+    background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+  }
+  
+  .celebration-title,
+  .celebration-text {
+    color: #E8F5E9;
+  }
+  
+  .game-badge {
+    background: #2E7D32;
+    color: #E8F5E9;
+  }
+}
+
+/* =============================================
+   ANIMACIONES ADICIONALES
+   ============================================= */
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.option-card {
+  animation: slideInUp 0.4s ease;
+}
+
+.option-card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.option-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.option-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.option-card:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* =============================================
+   ESTADOS DE CARGA
+   ============================================= */
+
+.option-card--loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.option-card--loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}   

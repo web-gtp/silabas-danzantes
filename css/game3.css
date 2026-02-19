@@ -1,0 +1,563 @@
+/* =============================================
+   ESTILOS ESPECÍFICOS - JUEGO 3: PALABRAS SECRETAS
+   ============================================= */
+
+/* TEMA DEL JUEGO 3 (Color naranja) */
+.game-header--game3 {
+  background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
+}
+
+.btn-start--game3 {
+  background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
+  animation: pulse 2s infinite;
+}
+
+.btn-start--game3:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 10px 25px rgba(255, 167, 38, 0.6);
+}
+
+/* =============================================
+   FORMULARIO DE CÓDIGO DE ESTUDIANTE
+   ============================================= */
+
+.student-code-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-input--large {
+  font-size: 24px !important;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* =============================================
+   PROGRESO DEL JUEGO
+   ============================================= */
+
+.progress-container {
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FFA726, #FB8C00);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+/* =============================================
+   IMAGEN DEL ESTÍMULO
+   ============================================= */
+
+.stimulus-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.stimulus-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  margin-bottom: 15px;
+  animation: zoomIn 0.5s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.btn-audio {
+  background: #FFA726;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-main);
+}
+
+.btn-audio:hover {
+  background: #FB8C00;
+  transform: scale(1.05);
+}
+
+.btn-audio:active {
+  transform: scale(0.95);
+}
+
+/* =============================================
+   PALABRA A COMPLETAR
+   ============================================= */
+
+.word-display-section {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.word-label {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 15px;
+}
+
+.word-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 20px;
+  background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+  border-radius: 15px;
+  min-height: 80px;
+}
+
+.letter-box {
+  width: 60px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 700;
+  border-radius: 10px;
+  background: white;
+  border: 3px solid #FFA726;
+  color: #FB8C00;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.letter-box--filled {
+  background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
+  color: white;
+  border-color: #FB8C00;
+  animation: fillLetter 0.3s ease;
+}
+
+@keyframes fillLetter {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.letter-box--blank {
+  border: 3px dashed #FFA726;
+  background: rgba(255, 167, 38, 0.1);
+  cursor: pointer;
+}
+
+.letter-box--blank:hover {
+  background: rgba(255, 167, 38, 0.2);
+  transform: scale(1.05);
+}
+
+.letter-box--correct {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  border-color: #4CAF50;
+  color: white;
+  animation: correctBounce 0.5s ease;
+}
+
+@keyframes correctBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.letter-box--wrong {
+  background: linear-gradient(135deg, #F44336 0%, #E53935 100%);
+  border-color: #F44336;
+  color: white;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+/* =============================================
+   OPCIONES DE LETRAS
+   ============================================= */
+
+.letters-section {
+  margin-bottom: 30px;
+}
+
+.letters-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.letter-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.letter-btn {
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  font-weight: 700;
+  border: 3px solid #FFA726;
+  background: white;
+  color: #FB8C00;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-main);
+  text-transform: uppercase;
+}
+
+.letter-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(255, 167, 38, 0.4);
+}
+
+.letter-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.letter-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: var(--color-gray);
+  color: var(--color-gray);
+}
+
+/* =============================================
+   BOTONES DE CONTROL
+   ============================================= */
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn-control {
+  flex: 1;
+  max-width: 200px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-main);
+}
+
+.btn-clear {
+  background: linear-gradient(135deg, #95A5A6 0%, #7F8C8D 100%);
+  color: white;
+}
+
+.btn-clear:hover:not(:disabled) {
+  background: linear-gradient(135deg, #7F8C8D 0%, #95A5A6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-check {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+}
+
+.btn-check:hover:not(:disabled) {
+  background: linear-gradient(135deg, #45a049 0%, #4CAF50 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+}
+
+.btn-control:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-control:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* =============================================
+   FEEDBACK
+   ============================================= */
+
+.feedback-content {
+  text-align: center;
+  padding: 30px;
+}
+
+.feedback-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.feedback-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.feedback-message {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--color-gray);
+}
+
+.feedback-points {
+  font-size: 28px;
+  font-weight: 700;
+  color: #FFA726;
+}
+
+.btn-next {
+  background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-main);
+}
+
+.btn-next:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 167, 38, 0.4);
+}
+
+/* =============================================
+   RESPONSIVE - MÓVIL
+   ============================================= */
+
+@media (max-width: 768px) {
+  .stimulus-image {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .word-label,
+  .letters-label {
+    font-size: 16px;
+  }
+  
+  .letter-box {
+    width: 50px;
+    height: 60px;
+    font-size: 28px;
+  }
+  
+  .letter-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+  
+  .control-buttons {
+    flex-direction: column;
+  }
+  
+  .btn-control {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .stimulus-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .word-label,
+  .letters-label {
+    font-size: 14px;
+  }
+  
+  .letter-box {
+    width: 45px;
+    height: 55px;
+    font-size: 24px;
+    gap: 5px;
+  }
+  
+  .letter-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+  
+  .btn-audio {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  
+  .btn-control {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+  
+  .feedback-icon {
+    font-size: 60px;
+  }
+  
+  .feedback-title {
+    font-size: 24px;
+  }
+  
+  .feedback-message {
+    font-size: 16px;
+  }
+}
+
+/* =============================================
+   LANDSCAPE MOBILE
+   ============================================= */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .stimulus-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .word-display {
+    padding: 10px;
+    min-height: 60px;
+  }
+  
+  .letter-box {
+    width: 40px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .letter-options {
+    padding: 10px;
+  }
+  
+  .letter-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+/* =============================================
+   ACCESIBILIDAD
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .stimulus-image,
+  .letter-box--filled,
+  .letter-box--correct,
+  .letter-box--wrong,
+  .feedback-icon {
+    animation: none !important;
+  }
+}
+
+/* =============================================
+   DARK MODE
+   ============================================= */
+
+@media (prefers-color-scheme: dark) {
+  .word-display {
+    background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%);
+  }
+  
+  .letter-options {
+    background: #2d2d2d;
+  }
+  
+  .letter-btn {
+    background: #3a3a3a;
+    color: #FFA726;
+  }
+}

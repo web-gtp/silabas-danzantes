@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - Exportar Datos</title>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  
+  <!-- PANTALLA DE LOGIN -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-container">
+      <div class="login-header">
+        <div class="login-icon">🔒</div>
+        <h1 class="login-title">Panel de Administración</h1>
+        <p class="login-subtitle">Acceso Restringido</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="adminPassword" class="form-label">
+            <span class="label-icon">🔑</span>
+            <span class="label-text">Contraseña de Administrador</span>
+          </label>
+          <input 
+            type="password" 
+            id="adminPassword" 
+            class="form-input"
+            required 
+            placeholder="Ingresa la contraseña"
+            autocomplete="off"
+          >
+          <p id="loginError" class="login-error" hidden>❌ Contraseña incorrecta</p>
+        </div>
+
+        <button type="submit" class="btn-login">
+          <span class="btn-icon">🚪</span>
+          <span class="btn-text">ACCEDER</span>
+        </button>
+
+        <div class="login-footer">
+          <p class="login-hint">💡 Si olvidaste la contraseña, contacta al administrador del sistema</p>
+          <a href="index.html" class="btn-back-home">
+            <span class="btn-icon">⬅️</span>
+            <span class="btn-text">Volver a los Juegos</span>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PANEL DE ADMINISTRACIÓN (OCULTO HASTA LOGIN) -->
+  <div id="adminPanel" class="admin-container" hidden>
+    
+    <!-- HEADER -->
+    <header class="admin-header">
+      <div class="header-content">
+        <h1 class="admin-title">
+          <span class="title-icon">📊</span>
+          Panel de Administración
+        </h1>
+        <p class="admin-subtitle">Exportación de Datos para Análisis SPSS</p>
+        
+        <button id="btnLogout" class="btn-logout">
+          <span class="btn-icon">🚪</span>
+          <span class="btn-text">Cerrar Sesión</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="admin-main">
+      
+      <!-- SECCIÓN: ESTADÍSTICAS R��PIDAS -->
+      <section class="stats-section">
+        <h2 class="section-title">📈 Estadísticas Generales</h2>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-value" id="totalStudents">-</div>
+            <div class="stat-label">Total Estudiantes</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">🎮</div>
+            <div class="stat-value" id="totalSessions">-</div>
+            <div class="stat-label">Sesiones Completadas</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-value" id="completedAll">-</div>
+            <div class="stat-label">Completaron 4 Juegos</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-value" id="lastUpdate">-</div>
+            <div class="stat-label">Última Actualización</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: EXPORTACIÓN DE DATOS -->
+      <section class="export-section">
+        <h2 class="section-title">💾 Exportar Datos</h2>
+        
+        <div class="export-options">
+          
+          <!-- OPCIÓN 1: DATOS COMPLETOS -->
+          <div class="export-card">
+            <div class="export-icon">📋</div>
+            <h3 class="export-title">Datos Completos (Todas las Variables)</h3>
+            <p class="export-description">
+              Incluye: demografía, pre-test, post-test, diferencias, tamaños efecto.
+              <br><strong>Formato:</strong> Excel (.xlsx) compatible con SPSS
+            </p>
+            <button id="btnExportAll" class="btn-export btn-export--primary">
+              <span class="btn-icon">📥</span>
+              <span class="btn-text">Descargar Datos Completos</span>
+            </button>
+          </div>
+
+          <!-- OPCIÓN 2: POR JUEGO -->
+          <div class="export-card">
+            <div class="export-icon">🎮</div>
+            <h3 class="export-title">Datos por Juego Individual</h3>
+            <p class="export-description">
+              Selecciona un juego específico para análisis detallado.
+            </p>
+            <div class="game-buttons">
+              <button id="btnExportGame1" class="btn-export btn-export--game1">
+                Juego 1: Emociones
+              </button>
+              <button id="btnExportGame2" class="btn-export btn-export--game2">
+                Juego 2: Memoria
+              </button>
+              <button id="btnExportGame3" class="btn-export btn-export--game3">
+                Juego 3: Palabras
+              </button>
+              <button id="btnExportGame4" class="btn-export btn-export--game4">
+                Juego 4: Rimas
+              </button>
+            </div>
+          </div>
+
+          <!-- OPCIÓN 3: RESPUESTAS INDIVIDUALES -->
+          <div class="export-card">
+            <div class="export-icon">📝</div>
+            <h3 class="export-title">Respuestas Individuales (Item-Level)</h3>
+            <p class="export-description">
+              Datos ítem por ítem de cada respuesta para análisis detallado.
+            </p>
+            <button id="btnExportResponses" class="btn-export btn-export--secondary">
+              <span class="btn-icon">📥</span>
+              <span class="btn-text">Descargar Respuestas Detalladas</span>
+            </button>
+          </div>
+
+          <!-- OPCIÓN 4: DEMOGRAFÍA -->
+          <div class="export-card">
+            <div class="export-icon">👤</div>
+            <h3 class="export-title">Solo Datos Demográficos</h3>
+            <p class="export-description">
+              Género, NSE, idioma, exposición lectura/pantalla, ADHD.
+            </p>
+            <button id="btnExportDemo" class="btn-export btn-export--secondary">
+              <span class="btn-icon">📥</span>
+              <span class="btn-text">Descargar Demografía</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECCIÓN: VISTA PREVIA -->
+      <section class="preview-section">
+        <h2 class="section-title">👁️ Vista Previa de Datos</h2>
+        
+        <div class="preview-controls">
+          <button id="btnLoadPreview" class="btn-preview">
+            Cargar Vista Previa (Primeros 10 estudiantes)
+          </button>
+          <div id="previewStatus" class="preview-status"></div>
+        </div>
+        
+        <div id="previewTable" class="preview-table">
+          <!-- Tabla generada dinámicamente -->
+        </div>
+      </section>
+
+      <!-- SECCIÓN: FILTROS AVANZADOS -->
+      <section class="filters-section">
+        <h2 class="section-title">🔍 Filtros Avanzados</h2>
+        
+        <div class="filters-grid">
+          
+          <div class="filter-group">
+            <label class="filter-label">Por Fecha</label>
+            <div class="filter-inputs">
+              <input type="date" id="filterDateFrom" class="filter-input">
+              <span>hasta</span>
+              <input type="date" id="filterDateTo" class="filter-input">
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Por Idioma</label>
+            <select id="filterLanguage" class="filter-select">
+              <option value="all">Todos</option>
+              <option value="es">Solo Español</option>
+              <option value="en">Solo Inglés</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Solo Completados</label>
+            <input type="checkbox" id="filterCompleted" class="filter-checkbox">
+          </div>
+
+          <div class="filter-group">
+            <button id="btnApplyFilters" class="btn-filter">
+              Aplicar Filtros
+            </button>
+            <button id="btnClearFilters" class="btn-filter-clear">
+              Limpiar
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECCIÓN: INSTRUCCIONES -->
+      <section class="instructions-section">
+        <h2 class="section-title">📖 Instrucciones de Uso</h2>
+        
+        <div class="instructions-content">
+          <div class="instruction-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Selecciona tipo de exportación</h4>
+              <p>Para análisis completo en SPSS, usa "Datos Completos"</p>
+            </div>
+          </div>
+
+          <div class="instruction-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Descarga el archivo Excel</h4>
+              <p>Se descargará automáticamente un archivo .xlsx</p>
+            </div>
+          </div>
+
+          <div class="instruction-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Abre en Excel o SPSS</h4>
+              <p>El formato está optimizado para importación directa en SPSS</p>
+            </div>
+          </div>
+
+          <div class="instruction-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Variables Pre-Configuradas</h4>
+              <p>Todas las variables están etiquetadas según estándar SPSS</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="admin-footer">
+      <p>Panel de Administración | BIU 2026 | Versión 1.0</p>
+    </footer>
+
+  </div>
+
+  <!-- SPINNER DE CARGA -->
+  <div id="loadingSpinner" class="loading-overlay" hidden>
+    <div class="spinner"></div>
+    <p class="loading-text">Procesando datos...</p>
+  </div>
+
+  <!-- FIREBASE SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+  <!-- LIBRERÍA XLSX PARA EXCEL -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+  <!-- SCRIPTS DE LA APP -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

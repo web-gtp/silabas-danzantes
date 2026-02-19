@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Memoria Mágica | Juego 2</title>
+  
+  <meta name="description" content="Juego de memoria educativo">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#FF6B9D">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/game2.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app-container">
+    
+    <!-- HEADER FIJO -->
+    <header class="game-header game-header--game2">
+      <div class="header-content">
+        <h1 class="game-title">
+          <span class="title-icon">🧠</span>
+          <span class="title-text">Memoria Mágica</span>
+        </h1>
+        
+        <div class="header-right">
+          <div class="language-selector">
+            <button id="langBtnEs" class="lang-btn lang-btn--active" aria-label="Español">🇪🇸</button>
+            <button id="langBtnEn" class="lang-btn" aria-label="English">🇬🇧</button>
+          </div>
+          
+          <div class="score-display">
+            <span class="score-icon">⭐</span>
+            <span id="scoreValue" class="score-value">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="game-main">
+      
+      <!-- PANTALLA 1: BIENVENIDA -->
+      <section id="startScreen" class="screen screen--active">
+        <div class="screen-content">
+          <h2 class="screen-title">¡Bienvenido! 🎉</h2>
+          
+          <p class="screen-subtitle">¿Ya jugaste el Juego 1?</p>
+          
+          <form id="studentCodeForm" class="student-code-form">
+            
+            <!-- CÓDIGO ESTUDIANTE -->
+            <div class="form-group">
+              <label for="studentCodeInput" class="form-label">
+                <span class="label-icon">🎫</span>
+                <span class="label-text">Ingresa tu código de estudiante</span>
+              </label>
+              <input 
+                type="text" 
+                id="studentCodeInput" 
+                class="form-input form-input--large"
+                required 
+                placeholder="Ej: EST001"
+                maxlength="20"
+                autocomplete="off"
+              >
+              <p class="form-hint">💡 El mismo código del Juego 1</p>
+            </div>
+            
+            <!-- INSTRUCCIONES DEL JUEGO -->
+            <div class="game-instructions">
+              <h3 class="instructions-title">¿Cómo jugar? 🎮</h3>
+              <ol class="instructions-list">
+                <li>🃏 Voltea 2 cartas</li>
+                <li>🔍 Encuentra los pares</li>
+                <li>⏱️ ¡Hazlo rápido para más puntos!</li>
+              </ol>
+            </div>
+            
+            <!-- DIFICULTAD -->
+            <div class="form-group">
+              <label for="difficultySelect" class="form-label">
+                <span class="label-icon">🎯</span>
+                <span class="label-text">Nivel de dificultad</span>
+              </label>
+              <select id="difficultySelect" class="form-select">
+                <option value="1">🟢 Fácil (3 pares)</option>
+                <option value="2" selected>🟡 Normal (6 pares)</option>
+                <option value="3">🔴 Difícil (8 pares)</option>
+              </select>
+            </div>
+            
+            <!-- BOTÓN INICIAR -->
+            <button type="submit" class="btn-start btn-start--game2">
+              <span class="btn-icon">🚀</span>
+              <span class="btn-text">¡EMPEZAR JUEGO 2!</span>
+            </button>
+            
+            <p class="privacy-note">🔒 Tus datos están seguros</p>
+          </form>
+        </div>
+      </section>
+
+      <!-- PANTALLA 2: JUEGO -->
+      <section id="gameScreen" class="screen">
+        <div class="screen-content">
+          
+          <!-- ESTADÍSTICAS DEL JUEGO -->
+          <div class="game-stats">
+            <div class="stat-item">
+              <span class="stat-icon">🎯</span>
+              <span class="stat-label">Pares:</span>
+              <span id="pairsFound" class="stat-value">0</span>
+              <span>/</span>
+              <span id="totalPairs" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🔄</span>
+              <span class="stat-label">Intentos:</span>
+              <span id="attempts" class="stat-value">0</span>
+            </div>
+          </div>
+          
+          <!-- TABLERO DE CARTAS -->
+          <div id="cardBoard" class="card-board"></div>
+          
+        </div>
+      </section>
+
+      <!-- PANTALLA 3: RESULTADOS -->
+      <section id="endScreen" class="screen">
+        <div class="screen-content">
+          <h2 class="screen-title">🎉 ¡Completado!</h2>
+          
+          <div class="end-stats">
+            <div class="stat-card">
+              <div class="stat-icon">⏱️</div>
+              <div class="stat-label">Tiempo</div>
+              <div id="finalTime" class="stat-value">0:00</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🔄</div>
+              <div class="stat-label">Intentos</div>
+              <div id="finalAttempts" class="stat-value">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-label">Precisión</div>
+              <div id="finalAccuracy" class="stat-value">0%</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⭐</div>
+              <div class="stat-label">Puntos</div>
+              <div id="finalScore" class="stat-value">0</div>
+            </div>
+          </div>
+          
+          <div id="endMessage" class="end-message"></div>
+          
+          <!-- BOTÓN JUEGO 3 -->
+          <div class="next-game-section">
+            <h3 class="next-game-title">🎮 ¿Listo para el siguiente?</h3>
+            <p class="next-game-text">Juego 3: Palabras Secretas</p>
+            <button id="goToGame3Btn" class="btn-next-game">
+              <span class="btn-icon">▶️</span>
+              <span class="btn-text">IR AL JUEGO 3</span>
+            </button>
+          </div>
+          
+          <button id="restartBtn" class="btn-restart" type="button">
+            <span class="btn-icon">🔄</span>
+            <span class="btn-text">JUGAR DE NUEVO</span>
+          </button>
+          
+          <a href="index.html" class="btn-back">
+            <span class="btn-icon">⬅️</span>
+            <span class="btn-text">VOLVER AL JUEGO 1</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="game-footer">
+      <p>Investigación educativa | BIU 2026 | Juego 2 de 4</p>
+    </footer>
+    
+  </div>
+
+  <!-- ELEMENTOS OCULTOS -->
+  <div id="loadingSpinner" class="loading-spinner" hidden>
+    <div class="spinner"></div>
+    <p>Cargando...</p>
+  </div>
+
+  <!-- TIMER DEL JUEGO -->
+  <div id="gameTimer" class="game-timer" style="display: none;">
+    <span class="timer-icon">⏱️</span>
+    <span id="timerValue">0:00</span>
+  </div>
+
+  <!-- FIREBASE SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+
+  <!-- SCRIPTS DE LA APP -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/game2.js"></script>
+  <script src="js/main2.js"></script>
+  
+</body>
+</html>

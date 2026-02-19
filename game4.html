@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Rimas Divertidas | Juego 4</title>
+  
+  <meta name="description" content="Juego de rimas y sonidos">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#4CAF50">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/game4.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app-container">
+    
+    <!-- HEADER FIJO -->
+    <header class="game-header game-header--game4">
+      <div class="header-content">
+        <h1 class="game-title">
+          <span class="title-icon">🎵</span>
+          <span class="title-text">Rimas Divertidas</span>
+        </h1>
+        
+        <div class="header-right">
+          <div class="language-selector">
+            <button id="langBtnEs" class="lang-btn lang-btn--active" aria-label="Español">🇪🇸</button>
+            <button id="langBtnEn" class="lang-btn" aria-label="English">🇬🇧</button>
+          </div>
+          
+          <div class="score-display">
+            <span class="score-icon">⭐</span>
+            <span id="scoreValue" class="score-value">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="game-main">
+      
+      <!-- PANTALLA 1: BIENVENIDA -->
+      <section id="startScreen" class="screen screen--active">
+        <div class="screen-content">
+          <h2 class="screen-title">¡Hola Poeta! 🎭</h2>
+          
+          <p class="screen-subtitle">¿Listo para encontrar palabras que riman?</p>
+          
+          <form id="studentCodeForm" class="student-code-form">
+            
+            <!-- CÓDIGO ESTUDIANTE -->
+            <div class="form-group">
+              <label for="studentCodeInput" class="form-label">
+                <span class="label-icon">🎫</span>
+                <span class="label-text">Ingresa tu código de estudiante</span>
+              </label>
+              <input 
+                type="text" 
+                id="studentCodeInput" 
+                class="form-input form-input--large"
+                required 
+                placeholder="Ej: EST001"
+                maxlength="20"
+                autocomplete="off"
+              >
+              <p class="form-hint">💡 El mismo código de los otros juegos</p>
+            </div>
+            
+            <!-- INSTRUCCIONES DEL JUEGO -->
+            <div class="game-instructions">
+              <h3 class="instructions-title">¿Cómo jugar? 🎮</h3>
+              <ol class="instructions-list">
+                <li>🔊 Escucha la palabra</li>
+                <li>🎯 Encuentra la palabra que rima</li>
+                <li>✅ Selecciona la respuesta correcta</li>
+              </ol>
+            </div>
+            
+            <!-- DIFICULTAD -->
+            <div class="form-group">
+              <label for="difficultySelect" class="form-label">
+                <span class="label-icon">🎯</span>
+                <span class="label-text">Nivel de dificultad</span>
+              </label>
+              <select id="difficultySelect" class="form-select">
+                <option value="1">🟢 Fácil (Rimas obvias)</option>
+                <option value="2" selected>🟡 Normal (Rimas comunes)</option>
+                <option value="3">🔴 Difícil (Rimas complejas)</option>
+              </select>
+            </div>
+            
+            <!-- BOTÓN INICIAR -->
+            <button type="submit" class="btn-start btn-start--game4">
+              <span class="btn-icon">🚀</span>
+              <span class="btn-text">¡EMPEZAR JUEGO 4!</span>
+            </button>
+            
+            <p class="privacy-note">🔒 Tus datos están seguros</p>
+          </form>
+        </div>
+      </section>
+
+      <!-- PANTALLA 2: JUEGO -->
+      <section id="gameScreen" class="screen">
+        <div class="screen-content">
+          
+          <!-- PROGRESO -->
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <p class="progress-text">
+              Pregunta <strong><span id="questionNumber">1</span></strong> de <strong><span id="totalQuestions">10</span></strong>
+            </p>
+          </div>
+          
+          <!-- CONTENIDO DEL JUEGO -->
+          <div class="game-content">
+            
+            <!-- PALABRA OBJETIVO -->
+            <div class="target-word-section">
+              <p class="target-label">Encuentra qué rima con:</p>
+              <div class="target-word-display">
+                <span id="targetWord" class="target-word">GATO</span>
+                <button id="playTargetBtn" class="btn-play-target" type="button">
+                  <span class="btn-icon">🔊</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- OPCIONES DE RESPUESTA -->
+            <div class="options-section">
+              <p class="options-label">Selecciona la respuesta:</p>
+              <div id="optionsContainer" class="options-container">
+                <!-- Opciones generadas dinámicamente -->
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- PANTALLA 3: FEEDBACK -->
+      <section id="feedbackScreen" class="screen">
+        <div class="screen-content">
+          <div id="feedbackContent" class="feedback-content"></div>
+          <button id="nextBtn" class="btn-next" type="button">
+            <span class="btn-icon">➡️</span>
+            <span class="btn-text">SIGUIENTE</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- PANTALLA 4: RESULTADOS -->
+      <section id="endScreen" class="screen">
+        <div class="screen-content">
+          <h2 class="screen-title">🎉 ¡Completado!</h2>
+          
+          <div class="end-stats">
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-label">Aciertos</div>
+              <div id="finalAccuracy" class="stat-value">0%</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⭐</div>
+              <div class="stat-label">Puntos</div>
+              <div id="finalScore" class="stat-value">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⏱️</div>
+              <div class="stat-label">Tiempo</div>
+              <div id="finalTime" class="stat-value">0:00</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⚡</div>
+              <div class="stat-label">Promedio</div>
+              <div id="finalAvgTime" class="stat-value">0ms</div>
+            </div>
+          </div>
+          
+          <div id="endMessage" class="end-message"></div>
+          
+          <!-- CELEBRACIÓN FINAL -->
+          <div class="final-celebration">
+            <h3 class="celebration-title">🎊 ¡Felicidades!</h3>
+            <p class="celebration-text">Has completado los 4 juegos educativos</p>
+            <div class="games-completed">
+              <span class="game-badge">✅ Emociones</span>
+              <span class="game-badge">✅ Memoria</span>
+              <span class="game-badge">✅ Palabras</span>
+              <span class="game-badge">✅ Rimas</span>
+            </div>
+          </div>
+          
+          <button id="restartBtn" class="btn-restart" type="button">
+            <span class="btn-icon">🔄</span>
+            <span class="btn-text">JUGAR DE NUEVO</span>
+          </button>
+          
+          <a href="game3.html" class="btn-back">
+            <span class="btn-icon">⬅️</span>
+            <span class="btn-text">VOLVER AL JUEGO 3</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="game-footer">
+      <p>Investigación educativa | BIU 2026 | Juego 4 de 4</p>
+    </footer>
+    
+  </div>
+
+  <!-- ELEMENTOS OCULTOS -->
+  <div id="loadingSpinner" class="loading-spinner" hidden>
+    <div class="spinner"></div>
+    <p>Cargando...</p>
+  </div>
+
+  <!-- TIMER DEL JUEGO -->
+  <div id="gameTimer" class="game-timer" style="display: none;">
+    <span class="timer-icon">⏱️</span>
+    <span id="timerValue">0:00</span>
+  </div>
+
+  <!-- FIREBASE SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+
+  <!-- SCRIPTS DE LA APP -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/game4.js"></script>
+  <script src="js/main4.js"></script>
+  
+</body>
+</html>
