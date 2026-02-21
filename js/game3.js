@@ -93,11 +93,29 @@ class PalabrasSecretasGame {
     Logger.log('✅ Event listeners configurados');
   }
 
-  checkStudentCode() {
+ checkStudentCode() {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     if (code) {
       document.getElementById('studentCodeInput').value = code;
+    }
+    const lang = urlParams.get('lang');
+    if (lang === 'es' || lang === 'en') {
+      this.currentLanguage = lang;
+      if (lang === 'es') {
+        this.elements.langBtnEs.classList.add('lang-btn--active');
+        this.elements.langBtnEn.classList.remove('lang-btn--active');
+      } else {
+        this.elements.langBtnEn.classList.add('lang-btn--active');
+        this.elements.langBtnEs.classList.remove('lang-btn--active');
+      }
+    }
+    const diff = parseInt(urlParams.get('diff'));
+    if (diff === 1 || diff === 2 || diff === 3) {
+      this.currentDifficulty = diff;
+      if (this.elements.difficultySelect) {
+        this.elements.difficultySelect.value = String(diff);
+      }
     }
   }
 
@@ -325,7 +343,7 @@ class PalabrasSecretasGame {
       { id: "en_w009", word: "WATER", image: "https://via.placeholder.com/200/4A90E2/FFFFFF?text=💧+Water", difficulty: 1, language: "en" },
       { id: "en_w010", word: "FIRE", image: "https://via.placeholder.com/200/FF6B6B/FFFFFF?text=🔥+Fire", difficulty: 1, language: "en" },
       { id: "en_w011", word: "BOOK", image: "https://via.placeholder.com/200/95E1D3/FFFFFF?text=📖+Book", difficulty: 1, language: "en" },
-      { id: "en_w012", word: "TABLE", image: "https://via.placeholder.com/200/4ECDC4/FFFFFF?text=🪑+Table", difficulty: 1, language: "en" },
+      { id: "en_w012", word: "CANDY", image: "https://via.placeholder.com/200/4ECDC4/FFFFFF?text=🍬+Candy", difficulty: 1, language: "en" },
       { id: "en_w013", word: "CHAIR", image: "https://via.placeholder.com/200/FFE66D/FFFFFF?text=🪑+Chair", difficulty: 1, language: "en" },
       { id: "en_w014", word: "BED", image: "https://via.placeholder.com/200/9013FE/FFFFFF?text=🛏️+Bed", difficulty: 1, language: "en" },
       { id: "en_w015", word: "DOOR", image: "https://via.placeholder.com/200/95A5A6/FFFFFF?text=🚪+Door", difficulty: 1, language: "en" },
@@ -975,7 +993,7 @@ class PalabrasSecretasGame {
   }
 
 goToNextGame() {
-  window.location.href = `game4.html?code=${this.studentCode}`;
+  window.location.href = `game4.html?code=${this.studentCode}&lang=${this.currentLanguage}&diff=${this.currentDifficulty}`;
 }
 
   async resetGame() {

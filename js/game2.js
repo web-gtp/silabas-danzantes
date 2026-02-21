@@ -88,6 +88,24 @@ class MemoriaMagicaGame {
     if (code) {
       document.getElementById('studentCodeInput').value = code;
     }
+    const lang = urlParams.get('lang');
+    if (lang === 'es' || lang === 'en') {
+      this.currentLanguage = lang;
+      if (lang === 'es') {
+        this.elements.langBtnEs.classList.add('lang-btn--active');
+        this.elements.langBtnEn.classList.remove('lang-btn--active');
+      } else {
+        this.elements.langBtnEn.classList.add('lang-btn--active');
+        this.elements.langBtnEs.classList.remove('lang-btn--active');
+      }
+    }
+    const diff = parseInt(urlParams.get('diff'));
+    if (diff === 1 || diff === 2 || diff === 3) {
+      this.currentDifficulty = diff;
+      if (this.elements.difficultySelect) {
+        this.elements.difficultySelect.value = String(diff);
+      }
+    }
   }
 
   async handleStudentCodeSubmit() {
@@ -830,7 +848,7 @@ class MemoriaMagicaGame {
   }
 
 goToNextGame() {
-  window.location.href = `game3.html?code=${this.studentCode}`;
+  window.location.href = `game3.html?code=${this.studentCode}&lang=${this.currentLanguage}&diff=${this.currentDifficulty}`;
 }
 
   async resetGame() {

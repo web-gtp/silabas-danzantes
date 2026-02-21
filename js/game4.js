@@ -83,11 +83,29 @@ class RimasDivertidasGame {
     Logger.log('✅ Event listeners configurados');
   }
 
-  checkStudentCode() {
+checkStudentCode() {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     if (code) {
       document.getElementById('studentCodeInput').value = code;
+    }
+    const lang = urlParams.get('lang');
+    if (lang === 'es' || lang === 'en') {
+      this.currentLanguage = lang;
+      if (lang === 'es') {
+        this.elements.langBtnEs.classList.add('lang-btn--active');
+        this.elements.langBtnEn.classList.remove('lang-btn--active');
+      } else {
+        this.elements.langBtnEn.classList.add('lang-btn--active');
+        this.elements.langBtnEs.classList.remove('lang-btn--active');
+      }
+    }
+    const diff = parseInt(urlParams.get('diff'));
+    if (diff === 1 || diff === 2 || diff === 3) {
+      this.currentDifficulty = diff;
+      if (this.elements.difficultySelect) {
+        this.elements.difficultySelect.value = String(diff);
+      }
     }
   }
 
@@ -167,7 +185,6 @@ class RimasDivertidasGame {
       { id: "es_r019", word: "LUNA", rhyme: "CUNA", difficulty: 1, language: "es" },
       { id: "es_r020", word: "NOCHE", rhyme: "COCHE", difficulty: 1, language: "es" },
       { id: "es_r021", word: "RATON", rhyme: "MELON", difficulty: 1, language: "es" },
-      { id: "es_r022", word: "SALON", rhyme: "CORAZON", difficulty: 1, language: "es" },
       { id: "es_r023", word: "MESA", rhyme: "FRESA", difficulty: 1, language: "es" },
       { id: "es_r024", word: "PERA", rhyme: "ESPERA", difficulty: 1, language: "es" },
       { id: "es_r025", word: "BOCA", rhyme: "LOCA", difficulty: 1, language: "es" },
@@ -198,7 +215,6 @@ class RimasDivertidasGame {
       { id: "es_r050", word: "BAÑO", rhyme: "AÑO", difficulty: 1, language: "es" },
 
       // NIVEL 2 (NORMAL): 50 RIMAS COMUNES
-      { id: "es_r051", word: "CORAZON", rhyme: "RAZON", difficulty: 2, language: "es" },
       { id: "es_r052", word: "ESTRELLA", rhyme: "BELLA", difficulty: 2, language: "es" },
       { id: "es_r053", word: "PASION", rhyme: "EMOCION", difficulty: 2, language: "es" },
       { id: "es_r054", word: "CAMINO", rhyme: "DESTINO", difficulty: 2, language: "es" },

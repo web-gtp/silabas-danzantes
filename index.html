@@ -146,10 +146,9 @@
         <div class="start-container">
           
           <!-- NOTA PARA PROFESORA -->
-          <div class="teacher-note">
-            <strong>👩‍🏫 INSTRUCCIONES PARA PROFESORA AUXILIAR:</strong><br>
+          <div class="teacher-note" style="color: #0c335d;">
+            <strong>👩‍🏫 INSTRUCCIONES PARA PROFESORA:</strong><br>
             Complete este formulario CON el estudiante antes de iniciar la sesión.<br>
-            Los datos demográficos (NSE, exposición, ADHD) ya deben estar registrados en Firebase.<br>
             Seleccione el TIPO DE SESIÓN y el IDIOMA antes de comenzar.
           </div>
           
@@ -171,7 +170,7 @@
               
               <!-- CÓDIGO ESTUDIANTE -->
               <div class="form-group">
-                <label for="studentCode">
+                <label for="studentCode" style="color: burlywood;">
                   <span class="form-icon">🎫</span> Código de estudiante *
                 </label>
                 <input 
@@ -189,7 +188,7 @@
               
               <!-- NOMBRE -->
               <div class="form-group">
-                <label for="participantName">
+                <label for="participantName" style="color: burlywood;">
                   <span class="form-icon">😊</span> Nombre completo *
                 </label>
                 <input 
@@ -205,7 +204,7 @@
               <!-- EDAD (AÑOS Y MESES) -->
               <div class="form-row">
                 <div class="form-group">
-                  <label for="participantAge">
+                  <label for="participantAge" style="color: burlywood;">
                     <span class="form-icon">🎂</span> Edad (años) *
                   </label>
                   <select id="participantAge" class="form-select" required>
@@ -219,7 +218,7 @@
                 </div>
                 
                 <div class="form-group">
-                  <label for="participantAgeMonths">
+                  <label for="participantAgeMonths" style="color: burlywood;">
                     <span class="form-icon">📅</span> Meses adicionales *
                   </label>
                   <select id="participantAgeMonths" class="form-select" required>
@@ -243,7 +242,7 @@
               
               <!-- GÉNERO -->
               <div class="form-group">
-                <label>
+                <label style="color: burlywood;">
                   <span class="form-icon">👤</span> Género *
                 </label>
                 <div class="gender-buttons">
@@ -265,7 +264,7 @@
               
               <!-- TIPO DE SESIÓN -->
               <div class="form-group">
-                <label>
+                <label style="color: burlywood;">
                   <span class="form-icon">📊</span> Tipo de sesión *
                 </label>
                 <div class="session-type-selector">
@@ -287,7 +286,7 @@
               
               <!-- SEMANA DE INTERVENCIÓN -->
               <div class="form-group" id="weekNumberGroup">
-                <label for="weekNumber">
+                <label for="weekNumber" style="color: burlywood;">
                   <span class="form-icon">📅</span> Semana de intervención *
                 </label>
                 <select id="weekNumber" class="form-select" required>
@@ -307,7 +306,7 @@
               
               <!-- IDIOMA DE LA SESIÓN -->
               <div class="form-group">
-                <label>
+                <label style="color: burlywood;">
                   <span class="form-icon">🌐</span> Idioma de esta sesión *
                 </label>
                 <div class="session-type-selector">
@@ -328,7 +327,7 @@
               
               <!-- NIVEL DE DIFICULTAD -->
               <div class="form-group">
-                <label for="difficultySelect">
+                <label for="difficultySelect" style="color: burlywood;">
                   <span class="form-icon">🎯</span> Nivel de dificultad *
                 </label>
                 <select id="difficultySelect" class="form-select">
@@ -354,7 +353,7 @@
               
               <!-- IDIOMA PRIMARIO (L1) -->
               <div class="form-group">
-                <label for="primaryLanguage">
+                <label for="primaryLanguage" style="color:cadetblue">
                   <span class="form-icon">🗣️</span> Idioma primario del estudiante (L1)
                 </label>
                 <select id="primaryLanguage" class="form-select">
@@ -367,7 +366,7 @@
               
               <!-- IDIOMA DEL HOGAR -->
               <div class="form-group">
-                <label for="homeLanguage">
+                <label for="homeLanguage" style="color:cadetblue">
                   <span class="form-icon">🏠</span> Idioma del hogar
                 </label>
                 <select id="homeLanguage" class="form-select">
@@ -379,7 +378,7 @@
               
               <!-- NIVEL SOCIOECONÓMICO -->
               <div class="form-group">
-                <label for="nseLevel">
+                <label for="nseLevel" style="color:cadetblue">
                   <span class="form-icon">💰</span> Nivel Socioeconómico (NSE)
                 </label>
                 <select id="nseLevel" class="form-select">
@@ -393,7 +392,7 @@
               
               <!-- EXPOSICIÓN A LECTURA -->
               <div class="form-group">
-                <label for="readingHours">
+                <label for="readingHours" style="color:cadetblue">
                   <span class="form-icon">📚</span> Exposición a lectura (horas semanales)
                 </label>
                 <div class="range-input-container">
@@ -413,7 +412,7 @@
               
               <!-- EXPOSICIÓN A PANTALLAS -->
               <div class="form-group">
-                <label for="screenHours">
+                <label for="screenHours" style="color:cadetblue">
                   <span class="form-icon">📱</span> Exposición a pantallas (horas semanales)
                 </label>
                 <div class="range-input-container">
@@ -433,7 +432,7 @@
               
               <!-- SCREENING ADHD -->
               <div class="form-group">
-                <label for="adhdScreening">
+                <label for="adhdScreening" style="color:cadetblue">
                   <span class="form-icon">🧠</span> Screening ADHD (SNAP-IV)
                 </label>
                 <select id="adhdScreening" class="form-select">
@@ -543,14 +542,7 @@
           <h2 class="end-title">🎉 ¡Sesión completada!</h2>
           
           <!-- RESUMEN DE SESIÓN -->
-          <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-            <p style="margin: 0; font-size: 14px;">
-              <strong>Estudiante:</strong> <span id="summaryStudentName">-</span><br>
-              <strong>Idioma de sesión:</strong> <span id="summaryLanguage">-</span><br>
-              <strong>Semana:</strong> <span id="summaryWeek">-</span><br>
-              <strong>Tipo:</strong> <span id="summaryType">-</span>
-            </p>
-          </div>
+        
           
           <div class="end-stats">
             <div class="stat">
@@ -570,11 +562,10 @@
           <div class="end-message" id="endMessage"></div>
           
           <!-- INSTRUCCIONES PARA PROFESORA -->
-          <div class="teacher-note" style="margin-top: 20px;">
+          <div class="teacher-note" style="margin-top: 20px;color: #0c335d;">
             <strong>👩‍🏫 SIGUIENTE PASO:</strong><br>
             • Si es PRE-TEST o POST-TEST: Registrar datos en hoja de control<br>
             • Si es INTERVENCIÓN: Estudiante puede regresar a clase<br>
-            • Verificar que datos se guardaron en Firebase<br>
             • Preparar estación para siguiente estudiante
           </div>
           
@@ -612,6 +603,7 @@
 
   <script src="js/firebase-config.js"></script>
   <script src="js/utils.js"></script>
+  <script src="js/session-manager.js"></script>
   <script src="js/game.js"></script>
   <script src="js/main.js"></script>
   

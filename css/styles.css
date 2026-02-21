@@ -1102,7 +1102,7 @@ body {
 }
 
 .btn--check {
-  background: var(--color-success);
+  background: #58D68E;
   color: var(--color-white);
   font-size: 24px;
   padding: 18px;
@@ -1111,11 +1111,11 @@ body {
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: var(--transition-fast);
-  box-shadow: 0 4px 0 #7DCCC5;
+  box-shadow: 0 4px 0 #58D68E;
 }
 
 .btn--check:hover:not(:disabled) {
-  background: #7DCCC5;
+  background: #58D68E;
   transform: translateY(-3px);
   box-shadow: 0 6px 0 #6BB8B1;
 }
