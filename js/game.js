@@ -314,70 +314,63 @@ class SilabasDanzantesGame {
   //  EN-N3: playground→🛝(ok), accordion→🪗(ok), xylophone→🎵(ok)
   //         duplicates umbrella/caterpillar→volcano🌋/centipede🐛
   // ============================================================
-  loadFallbackData() {
+loadFallbackData() {
     if (this.currentLanguage === 'es') {
       this.stimuli = [
+        // ── ESPAÑOL NIVEL 1 — 51 palabras ──
+        { id:"es_f001", word:"sol",      syllables:["sol"],         difficulty:1, language:"es" },
+        { id:"es_f002", word:"mar",      syllables:["mar"],         difficulty:1, language:"es" },
+        { id:"es_f003", word:"pan",      syllables:["pan"],         difficulty:1, language:"es" },
+        { id:"es_f004", word:"pez",      syllables:["pez"],         difficulty:1, language:"es" },
+        { id:"es_f005", word:"luz",      syllables:["luz"],         difficulty:1, language:"es" },
+        { id:"es_f006", word:"flor",     syllables:["flor"],        difficulty:1, language:"es" },
+        { id:"es_f007", word:"gato",     syllables:["ga","to"],     difficulty:1, language:"es" },
+        { id:"es_f008", word:"casa",     syllables:["ca","sa"],     difficulty:1, language:"es" },
+        { id:"es_f009", word:"perro",    syllables:["pe","rro"],    difficulty:1, language:"es" },
+        { id:"es_f010", word:"luna",     syllables:["lu","na"],     difficulty:1, language:"es" },
+        { id:"es_f011", word:"mesa",     syllables:["me","sa"],     difficulty:1, language:"es" },
+        { id:"es_f012", word:"silla",    syllables:["si","lla"],    difficulty:1, language:"es" },
+        { id:"es_f013", word:"libro",    syllables:["li","bro"],    difficulty:1, language:"es" },
+        { id:"es_f014", word:"niño",     syllables:["ni","ño"],     difficulty:1, language:"es" },
+        { id:"es_f015", word:"boca",     syllables:["bo","ca"],     difficulty:1, language:"es" },
+        { id:"es_f016", word:"mano",     syllables:["ma","no"],     difficulty:1, language:"es" },
+        { id:"es_f017", word:"pelo",     syllables:["pe","lo"],     difficulty:1, language:"es" },
+        { id:"es_f018", word:"agua",     syllables:["a","gua"],     difficulty:1, language:"es" },
+        { id:"es_f019", word:"cama",     syllables:["ca","ma"],     difficulty:1, language:"es" },
+        { id:"es_f020", word:"vaca",     syllables:["va","ca"],     difficulty:1, language:"es" },
+        { id:"es_f021", word:"pato",     syllables:["pa","to"],     difficulty:1, language:"es" },
+        { id:"es_f022", word:"sapo",     syllables:["sa","po"],     difficulty:1, language:"es" },
+        { id:"es_f023", word:"oso",      syllables:["o","so"],      difficulty:1, language:"es" },
+        { id:"es_f024", word:"lobo",     syllables:["lo","bo"],     difficulty:1, language:"es" },
+        { id:"es_f025", word:"rata",     syllables:["ra","ta"],     difficulty:1, language:"es" },
+        { id:"es_f026", word:"loro",     syllables:["lo","ro"],     difficulty:1, language:"es" },
+        { id:"es_f027", word:"puma",     syllables:["pu","ma"],     difficulty:1, language:"es" },
+        { id:"es_f028", word:"coco",     syllables:["co","co"],     difficulty:1, language:"es" },
+        { id:"es_f029", word:"uva",      syllables:["u","va"],      difficulty:1, language:"es" },
+        { id:"es_f030", word:"pera",     syllables:["pe","ra"],     difficulty:1, language:"es" },
+        { id:"es_f031", word:"piña",     syllables:["pi","ña"],     difficulty:1, language:"es" },
+        { id:"es_f032", word:"toro",     syllables:["to","ro"],     difficulty:1, language:"es" },
+        { id:"es_f033", word:"rosa",     syllables:["ro","sa"],     difficulty:1, language:"es" },
+        { id:"es_f034", word:"nube",     syllables:["nu","be"],     difficulty:1, language:"es" },
+        { id:"es_f035", word:"dedo",     syllables:["de","do"],     difficulty:1, language:"es" },
+        { id:"es_f036", word:"codo",     syllables:["co","do"],     difficulty:1, language:"es" },
+        { id:"es_f037", word:"pie",      syllables:["pie"],         difficulty:1, language:"es" },
+        { id:"es_f038", word:"ojo",      syllables:["o","jo"],      difficulty:1, language:"es" },
+        { id:"es_f039", word:"cara",     syllables:["ca","ra"],     difficulty:1, language:"es" },
+        { id:"es_f040", word:"ropa",     syllables:["ro","pa"],     difficulty:1, language:"es" },
+        { id:"es_f041", word:"mono",     syllables:["mo","no"],     difficulty:1, language:"es" },
+        { id:"es_f042", word:"foca",     syllables:["fo","ca"],     difficulty:1, language:"es" },
+        { id:"es_f043", word:"dado",     syllables:["da","do"],     difficulty:1, language:"es" },
+        { id:"es_f044", word:"lana",     syllables:["la","na"],     difficulty:1, language:"es" },
+        { id:"es_f045", word:"palo",     syllables:["pa","lo"],     difficulty:1, language:"es" },
+        { id:"es_f046", word:"sopa",     syllables:["so","pa"],     difficulty:1, language:"es" },
+        { id:"es_f047", word:"bote",     syllables:["bo","te"],     difficulty:1, language:"es" },
+        { id:"es_f048", word:"taza",     syllables:["ta","za"],     difficulty:1, language:"es" },
+        { id:"es_f049", word:"cuna",     syllables:["cu","na"],     difficulty:1, language:"es" },
+        { id:"es_f050", word:"lupa",     syllables:["lu","pa"],     difficulty:1, language:"es" },
+        { id:"es_f051", word:"tren",     syllables:["tren"],        difficulty:1, language:"es" },
 
-        // ════════════════════════════════════════════════
-        // ESPAÑOL NIVEL 1 — 51 palabras (1-2 sílabas)
-        // ════════════════════════════════════════════════
-        // Todas verificadas ✅
-        { id:"es_f001", word:"sol",   syllables:["sol"],     difficulty:1, language:"es" },
-        { id:"es_f002", word:"mar",   syllables:["mar"],     difficulty:1, language:"es" },
-        { id:"es_f003", word:"pan",   syllables:["pan"],     difficulty:1, language:"es" },
-        { id:"es_f004", word:"pez",   syllables:["pez"],     difficulty:1, language:"es" },
-        { id:"es_f005", word:"luz",   syllables:["luz"],     difficulty:1, language:"es" },
-        { id:"es_f006", word:"flor",  syllables:["flor"],    difficulty:1, language:"es" },
-        { id:"es_f007", word:"gato",  syllables:["ga","to"], difficulty:1, language:"es" },
-        { id:"es_f008", word:"casa",  syllables:["ca","sa"], difficulty:1, language:"es" },
-        { id:"es_f009", word:"perro", syllables:["pe","rro"],difficulty:1, language:"es" },
-        { id:"es_f010", word:"luna",  syllables:["lu","na"], difficulty:1, language:"es" },
-        { id:"es_f011", word:"mesa",  syllables:["me","sa"], difficulty:1, language:"es" },
-        { id:"es_f012", word:"silla", syllables:["si","lla"],difficulty:1, language:"es" },
-        { id:"es_f013", word:"libro", syllables:["li","bro"],difficulty:1, language:"es" },
-        { id:"es_f014", word:"niño",  syllables:["ni","ño"], difficulty:1, language:"es" },
-        { id:"es_f015", word:"boca",  syllables:["bo","ca"], difficulty:1, language:"es" },
-        { id:"es_f016", word:"mano",  syllables:["ma","no"], difficulty:1, language:"es" },
-        { id:"es_f017", word:"pelo",  syllables:["pe","lo"], difficulty:1, language:"es" },
-        { id:"es_f018", word:"agua",  syllables:["a","gua"], difficulty:1, language:"es" },
-        { id:"es_f019", word:"cama",  syllables:["ca","ma"], difficulty:1, language:"es" },
-        { id:"es_f020", word:"vaca",  syllables:["va","ca"], difficulty:1, language:"es" },
-        { id:"es_f021", word:"pato",  syllables:["pa","to"], difficulty:1, language:"es" },
-        { id:"es_f022", word:"sapo",  syllables:["sa","po"], difficulty:1, language:"es" },
-        { id:"es_f023", word:"oso",   syllables:["o","so"],  difficulty:1, language:"es" },
-        { id:"es_f024", word:"lobo",  syllables:["lo","bo"], difficulty:1, language:"es" },
-        { id:"es_f025", word:"rata",  syllables:["ra","ta"], difficulty:1, language:"es" },
-        { id:"es_f026", word:"loro",  syllables:["lo","ro"], difficulty:1, language:"es" },
-        { id:"es_f027", word:"puma",  syllables:["pu","ma"], difficulty:1, language:"es" },
-        { id:"es_f028", word:"coco",  syllables:["co","co"], difficulty:1, language:"es" },
-        { id:"es_f029", word:"uva",   syllables:["u","va"],  difficulty:1, language:"es" },
-        { id:"es_f030", word:"pera",  syllables:["pe","ra"], difficulty:1, language:"es" },
-        { id:"es_f031", word:"piña",  syllables:["pi","ña"], difficulty:1, language:"es" },
-        { id:"es_f032", word:"toro",  syllables:["to","ro"], difficulty:1, language:"es" },
-        { id:"es_f033", word:"rosa",  syllables:["ro","sa"], difficulty:1, language:"es" },
-        { id:"es_f034", word:"nube",  syllables:["nu","be"], difficulty:1, language:"es" },
-        { id:"es_f035", word:"dedo",  syllables:["de","do"], difficulty:1, language:"es" },
-        { id:"es_f036", word:"codo",  syllables:["co","do"], difficulty:1, language:"es" },
-        { id:"es_f037", word:"pie",   syllables:["pie"],     difficulty:1, language:"es" },
-        { id:"es_f038", word:"ojo",   syllables:["o","jo"],  difficulty:1, language:"es" },
-        { id:"es_f039", word:"cara",  syllables:["ca","ra"], difficulty:1, language:"es" },
-        { id:"es_f040", word:"ropa",  syllables:["ro","pa"], difficulty:1, language:"es" },
-        { id:"es_f041", word:"mono",  syllables:["mo","no"], difficulty:1, language:"es" },
-        { id:"es_f042", word:"foca",  syllables:["fo","ca"], difficulty:1, language:"es" },
-        // 🔄 "tubo" (emoji 🔧 confuso) → "dado" 🎲
-        { id:"es_f043", word:"dado",  syllables:["da","do"], difficulty:1, language:"es" },
-        { id:"es_f044", word:"lana",  syllables:["la","na"], difficulty:1, language:"es" },
-        { id:"es_f045", word:"palo",  syllables:["pa","lo"], difficulty:1, language:"es" },
-        { id:"es_f046", word:"sopa",  syllables:["so","pa"], difficulty:1, language:"es" },
-        { id:"es_f047", word:"bote",  syllables:["bo","te"], difficulty:1, language:"es" },
-        { id:"es_f048", word:"taza",  syllables:["ta","za"], difficulty:1, language:"es" },
-        { id:"es_f049", word:"cuna",  syllables:["cu","na"], difficulty:1, language:"es" },
-        { id:"es_f050", word:"lupa",  syllables:["lu","pa"], difficulty:1, language:"es" },
-        { id:"es_f051", word:"tren",  syllables:["tren"],    difficulty:1, language:"es" },
-
-        // ════════════════════════════════════════════════
-        // ESPAÑOL NIVEL 2 — 52 palabras (3 sílabas)
-        // ════════════════════════════════════════════════
+        // ── ESPAÑOL NIVEL 2 — 52 palabras ──
         { id:"es_n001", word:"pelota",   syllables:["pe","lo","ta"],   difficulty:2, language:"es" },
         { id:"es_n002", word:"zapato",   syllables:["za","pa","to"],   difficulty:2, language:"es" },
         { id:"es_n003", word:"camisa",   syllables:["ca","mi","sa"],   difficulty:2, language:"es" },
@@ -401,53 +394,37 @@ class SilabasDanzantesGame {
         { id:"es_n021", word:"tenedor",  syllables:["te","ne","dor"],  difficulty:2, language:"es" },
         { id:"es_n022", word:"cuchillo", syllables:["cu","chi","llo"], difficulty:2, language:"es" },
         { id:"es_n023", word:"cocina",   syllables:["co","ci","na"],   difficulty:2, language:"es" },
-        // 🔄 "sartén" (2 sílabas, emoji ≈ sartén no reconocible) → "guitarra" 🎸
         { id:"es_n024", word:"guitarra", syllables:["gui","ta","rra"], difficulty:2, language:"es" },
-        // 🔄 "melón" (2 sílabas) → "hamster" 🐹
         { id:"es_n025", word:"hamster",  syllables:["hams","ter"],     difficulty:2, language:"es" },
         { id:"es_n026", word:"sandía",   syllables:["san","dí","a"],   difficulty:2, language:"es" },
         { id:"es_n027", word:"pepino",   syllables:["pe","pi","no"],   difficulty:2, language:"es" },
-        // 🔄 "limón" (2 sílabas) → "tambor" 🥁
         { id:"es_n028", word:"tambor",   syllables:["tam","bor"],      difficulty:2, language:"es" },
         { id:"es_n029", word:"cereza",   syllables:["ce","re","za"],   difficulty:2, language:"es" },
-        // 🔄 "fresa" (2 sílabas) → "cohete" 🚀
         { id:"es_n030", word:"cohete",   syllables:["co","he","te"],   difficulty:2, language:"es" },
         { id:"es_n031", word:"botella",  syllables:["bo","te","lla"],  difficulty:2, language:"es" },
         { id:"es_n032", word:"espejo",   syllables:["es","pe","jo"],   difficulty:2, language:"es" },
-        // 🔄 "reloj" (2 sílabas) → "colores" 🖍️
         { id:"es_n033", word:"colores",  syllables:["co","lo","res"],  difficulty:2, language:"es" },
         { id:"es_n034", word:"maleta",   syllables:["ma","le","ta"],   difficulty:2, language:"es" },
         { id:"es_n035", word:"corona",   syllables:["co","ro","na"],   difficulty:2, language:"es" },
-        // 🔄 "barco" (2 sílabas) → "bufanda" 🧣
         { id:"es_n036", word:"bufanda",  syllables:["bu","fan","da"],  difficulty:2, language:"es" },
-        // 🔄 "avión" (2 sílabas) → "cigüeña" 🦢
         { id:"es_n037", word:"cigüeña",  syllables:["ci","güe","ña"],  difficulty:2, language:"es" },
         { id:"es_n038", word:"planeta",  syllables:["pla","ne","ta"],  difficulty:2, language:"es" },
         { id:"es_n039", word:"estrella", syllables:["es","tre","lla"], difficulty:2, language:"es" },
         { id:"es_n040", word:"cometa",   syllables:["co","me","ta"],   difficulty:2, language:"es" },
         { id:"es_n041", word:"montaña",  syllables:["mon","ta","ña"],  difficulty:2, language:"es" },
-        // 🔄 "volcán" (2 sílabas) → "pingüino" 🐧
         { id:"es_n042", word:"pingüino", syllables:["pin","güi","no"], difficulty:2, language:"es" },
-        // 🔄 "río" (2 sílabas) → "ballena" 🐋
         { id:"es_n043", word:"ballena",  syllables:["ba","lle","na"],  difficulty:2, language:"es" },
-        // 🔄 "bosque" (2 sílabas) → "linterna" 🔦
         { id:"es_n044", word:"linterna", syllables:["lin","ter","na"], difficulty:2, language:"es" },
-        // 🔄 "árbol" (2 sílabas) → "papaya" 🥭
         { id:"es_n045", word:"papaya",   syllables:["pa","pa","ya"],   difficulty:2, language:"es" },
-        // 🔄 "hoja" (2 sílabas) → "maíz" 🌽 (3 sílabas)
         { id:"es_n046", word:"maíz",     syllables:["ma","íz"],        difficulty:2, language:"es" },
         { id:"es_n047", word:"semilla",  syllables:["se","mi","lla"],  difficulty:2, language:"es" },
-        // 🔄 "jardín" (2 sílabas) → "canguro" 🦘
         { id:"es_n048", word:"canguro",  syllables:["can","gu","ro"],  difficulty:2, language:"es" },
-        // 🔄 "piedra" (2 sílabas) → "tobillo" 🦵
         { id:"es_n049", word:"tobillo",  syllables:["to","bi","llo"],  difficulty:2, language:"es" },
         { id:"es_n050", word:"galleta",  syllables:["ga","lle","ta"],  difficulty:2, language:"es" },
         { id:"es_n051", word:"paraguas", syllables:["pa","ra","guas"], difficulty:2, language:"es" },
         { id:"es_n052", word:"langosta", syllables:["lan","gos","ta"], difficulty:2, language:"es" },
 
-        // ════════════════════════════════════════════════
-        // ESPAÑOL NIVEL 3 — 51 palabras (4+ sílabas)
-        // ════════════════════════════════════════════════
+        // ── ESPAÑOL NIVEL 3 — 51 palabras ──
         { id:"es_d001", word:"mariposa",    syllables:["ma","ri","po","sa"],        difficulty:3, language:"es" },
         { id:"es_d002", word:"elefante",    syllables:["e","le","fan","te"],        difficulty:3, language:"es" },
         { id:"es_d003", word:"hipopótamo",  syllables:["hi","po","pó","ta","mo"],   difficulty:3, language:"es" },
@@ -500,13 +477,9 @@ class SilabasDanzantesGame {
         { id:"es_d050", word:"circo",       syllables:["cir","co"],                difficulty:3, language:"es" },
         { id:"es_d051", word:"canguro",     syllables:["can","gu","ro"],            difficulty:3, language:"es" }
       ];
-
     } else {
-      // ════════════════════════════════════════════════
-      // INGLÉS NIVEL 1 — 52 palabras (1-2 sílabas)
-      // ════════════════════════════════════════════════
-      // Todas verificadas ✅
       this.stimuli = [
+        // ── INGLÉS NIVEL 1 — 52 palabras ──
         { id:"en_f001", word:"sun",   syllables:["sun"],      difficulty:1, language:"en" },
         { id:"en_f002", word:"cat",   syllables:["cat"],      difficulty:1, language:"en" },
         { id:"en_f003", word:"dog",   syllables:["dog"],      difficulty:1, language:"en" },
@@ -560,9 +533,7 @@ class SilabasDanzantesGame {
         { id:"en_f051", word:"kitty", syllables:["kit","ty"], difficulty:1, language:"en" },
         { id:"en_f052", word:"puppy", syllables:["pup","py"], difficulty:1, language:"en" },
 
-        // ════════════════════════════════════════════════
-        // INGLÉS NIVEL 2 — 51 palabras (2-3 sílabas)
-        // ════════════════════════════════════════════════
+        // ── INGLÉS NIVEL 2 — 51 palabras ──
         { id:"en_n001", word:"apple",    syllables:["ap","ple"],      difficulty:2, language:"en" },
         { id:"en_n002", word:"water",    syllables:["wa","ter"],      difficulty:2, language:"en" },
         { id:"en_n003", word:"pencil",   syllables:["pen","cil"],     difficulty:2, language:"en" },
@@ -593,36 +564,29 @@ class SilabasDanzantesGame {
         { id:"en_n028", word:"pepper",   syllables:["pep","per"],     difficulty:2, language:"en" },
         { id:"en_n029", word:"pillow",   syllables:["pil","low"],     difficulty:2, language:"en" },
         { id:"en_n030", word:"planet",   syllables:["plan","et"],     difficulty:2, language:"en" },
-        // 🔄 "pocket" (sin emoji claro para niños) → "mango" 🥭
         { id:"en_n031", word:"mango",    syllables:["man","go"],      difficulty:2, language:"en" },
         { id:"en_n032", word:"rocket",   syllables:["rock","et"],     difficulty:2, language:"en" },
         { id:"en_n033", word:"robot",    syllables:["ro","bot"],      difficulty:2, language:"en" },
-        // 🔄 "sister" (emoji 👧 OK) → se mantiene
         { id:"en_n034", word:"sister",   syllables:["sis","ter"],     difficulty:2, language:"en" },
         { id:"en_n035", word:"spider",   syllables:["spi","der"],     difficulty:2, language:"en" },
         { id:"en_n036", word:"tiger",    syllables:["ti","ger"],      difficulty:2, language:"en" },
         { id:"en_n037", word:"tomato",   syllables:["to","ma","to"],  difficulty:2, language:"en" },
         { id:"en_n038", word:"turtle",   syllables:["tur","tle"],     difficulty:2, language:"en" },
-        // 🔄 "wallet" (sin emoji claro para niños) → "mushroom" 🍄
         { id:"en_n039", word:"mushroom", syllables:["mush","room"],   difficulty:2, language:"en" },
         { id:"en_n040", word:"winter",   syllables:["win","ter"],     difficulty:2, language:"en" },
         { id:"en_n041", word:"brother",  syllables:["broth","er"],    difficulty:2, language:"en" },
         { id:"en_n042", word:"birthday", syllables:["birth","day"],   difficulty:2, language:"en" },
         { id:"en_n043", word:"thunder",  syllables:["thun","der"],    difficulty:2, language:"en" },
         { id:"en_n044", word:"butter",   syllables:["but","ter"],     difficulty:2, language:"en" },
-        // 🔄 "blanket" (sin emoji claro) → "scarf" 🧣
         { id:"en_n045", word:"scarf",    syllables:["scarf"],         difficulty:2, language:"en" },
         { id:"en_n046", word:"candle",   syllables:["can","dle"],     difficulty:2, language:"en" },
         { id:"en_n047", word:"cactus",   syllables:["cac","tus"],     difficulty:2, language:"en" },
         { id:"en_n048", word:"castle",   syllables:["cas","tle"],     difficulty:2, language:"en" },
         { id:"en_n049", word:"mitten",   syllables:["mit","ten"],     difficulty:2, language:"en" },
-        // 🔄 "number" (sin emoji concreto) → "puzzle" 🧩
         { id:"en_n050", word:"puzzle",   syllables:["puz","zle"],     difficulty:2, language:"en" },
         { id:"en_n051", word:"pickle",   syllables:["pick","le"],     difficulty:2, language:"en" },
 
-        // ════════════════════════════════════════════════
-        // INGLÉS NIVEL 3 — 51 palabras (3+ sílabas)
-        // ════════════════════════════════════════════════
+        // ── INGLÉS NIVEL 3 — 51 palabras ──
         { id:"en_d001", word:"butterfly",   syllables:["but","ter","fly"],       difficulty:3, language:"en" },
         { id:"en_d002", word:"elephant",    syllables:["el","e","phant"],        difficulty:3, language:"en" },
         { id:"en_d003", word:"dinosaur",    syllables:["di","no","saur"],        difficulty:3, language:"en" },
@@ -671,14 +635,11 @@ class SilabasDanzantesGame {
         { id:"en_d046", word:"xylophone",   syllables:["xy","lo","phone"],       difficulty:3, language:"en" },
         { id:"en_d047", word:"harmonica",   syllables:["har","mon","i","ca"],    difficulty:3, language:"en" },
         { id:"en_d048", word:"vegetables",  syllables:["veg","e","ta","bles"],   difficulty:3, language:"en" },
-        // 🔄 antes duplicado "umbrella" → "volcano" 🌋
         { id:"en_d049", word:"volcano",     syllables:["vol","ca","no"],         difficulty:3, language:"en" },
-        // 🔄 antes duplicado "caterpillar" → "centipede" 🐛
         { id:"en_d050", word:"centipede",   syllables:["cen","ti","pede"],       difficulty:3, language:"en" },
         { id:"en_d051", word:"university",  syllables:["u","ni","ver","si","ty"],difficulty:3, language:"en" }
       ];
     }
-
     Logger.log(`✅ ${this.stimuli.length} estímulos fallback para [${this.currentLanguage}]`);
   }
 
@@ -694,6 +655,75 @@ class SilabasDanzantesGame {
     return a;
   }
 
+  // ============================================================
+  // START GAME — Filtrar y preparar pool sin repetición
+  // ============================================================
+  async startGame() {
+    try {
+      const difficulty = this.currentDifficulty;
+      if (!ValidationUtils.isValidDifficulty(difficulty)) { alert('Nivel inválido'); return; }
+
+      this.currentQuestion   = 0;
+      this.totalScore        = 0;
+      this.correctAnswers    = 0;
+      this.allResponses      = [];
+      this.selectedSyllables = [];
+      this.elements.scoreValue.textContent = '0';
+
+      const filtered = this.stimuli.filter(s => {
+        const d = s.difficulty !== undefined
+          ? s.difficulty
+          : CalculationUtils.calculateDifficulty(s.syllables.length);
+        return d === difficulty;
+      });
+
+      if (filtered.length === 0) {
+        alert(`No hay palabras de nivel ${difficulty} en ${this.currentLanguage}`); return;
+      }
+
+      Logger.log(`🎮 ${filtered.length} palabras disponibles | ${this.currentLanguage} | nivel ${difficulty}`);
+
+      // Pool completo mezclado — garantiza NO repetir hasta agotar todas
+      this.shuffledStimuli      = this.shuffleArray(filtered);
+      this.usedStimuliIndices   = [];          // ← nuevo: índices ya usados en esta sesión
+      this.currentStimulusIndex = 0;
+
+      this.gameStartTime = Date.now();
+      this.startGameTimer();
+      await this.createSession();
+
+      DOMUtils.hide(this.elements.startScreen);
+      DOMUtils.show(this.elements.gameScreen);
+
+      const info = document.getElementById('activeSessionInfo');
+      if (info) info.textContent =
+        `${this.studentName} | ${this.currentLanguage.toUpperCase()} | Sem. ${this.weekNumber} | Nivel ${difficulty}`;
+
+      await this.loadNextQuestion();
+    } catch (e) {
+      Logger.error('Error iniciando juego', e);
+      alert('Error iniciando. Intenta de nuevo.');
+      DOMUtils.hideLoading();
+    }
+  }
+
+  // ============================================================
+  // SELECCIÓN SIN REPETICIÓN
+  // Al agotar el pool completo se vuelve a mezclar (nunca repite
+  // dentro de una ronda de N palabras disponibles).
+  // ============================================================
+  selectRandomStimulus() {
+    // Si ya usamos todas las palabras disponibles, reiniciar pool
+    if (this.currentStimulusIndex >= this.shuffledStimuli.length) {
+      this.shuffledStimuli      = this.shuffleArray(this.shuffledStimuli);
+      this.currentStimulusIndex = 0;
+      Logger.log('🔄 Pool agotado — re-mezclando para nueva ronda');
+    }
+
+    // Tomar la siguiente del pool (ya mezclado, sin saltar)
+    this.currentStimulus = this.shuffledStimuli[this.currentStimulusIndex++];
+    Logger.log(`▶ "${this.currentStimulus.word}" (${this.currentStimulusIndex}/${this.shuffledStimuli.length}) | dif:${this.currentStimulus.difficulty}`);
+  }
   // ============================================================
   // CHANGE LANGUAGE (durante el juego)
   // ============================================================
@@ -863,96 +893,95 @@ class SilabasDanzantesGame {
     } catch (e) { Logger.error('Error displayQuestion', e); }
   }
 
-  // ============================================================
-  // EMOJI MAP — COMPLETAMENTE AUDITADO
+   // ============================================================
+  // EMOJI MAP — COMPLETAMENTE AUDITADO (versión única, sin duplicados)
   // Cada entrada verificada: ¿el emoji es claro para niños 4-8?
   // ============================================================
-  getEmojiForWord(word) {
+ getEmojiForWord(word) {
     const emojiMap = {
       // ── ESPAÑOL NIVEL 1 ──────────────────────────────────────
-      'sol':'☀️','mar':'🌊','pan':'🍞','pez':'🐟','luz':'💡',
-      'flor':'🌸','gato':'🐱','casa':'🏠','perro':'🐶','luna':'🌙',
-      'mesa':'🪑','silla':'🪑','libro':'📖','niño':'👦','boca':'👄',
-      'mano':'✋','pelo':'💇','agua':'💧','cama':'🛏️','vaca':'🐄',
-      'pato':'🦆','sapo':'🐸','oso':'🐻','lobo':'🐺','rata':'🐀',
-      'loro':'🦜','puma':'🐆','coco':'🥥','uva':'🍇','pera':'🍐',
-      'piña':'🍍','toro':'🐂','rosa':'🌹','nube':'☁️','dedo':'☝️',
-      'codo':'💪','pie':'🦶','ojo':'👁️','cara':'😊','ropa':'👕',
-      'mono':'🐵','foca':'🦭','dado':'🎲','lana':'🧶','palo':'🪵',
-      'sopa':'🍲','bote':'⛵','taza':'☕','cuna':'🍼','lupa':'🔍',
+      'sol':'☀️',   'mar':'🌊',   'pan':'🍞',   'pez':'🐟',   'luz':'💡',
+      'flor':'🌸',  'gato':'🐱',  'casa':'🏠',  'perro':'🐶', 'luna':'🌙',
+      'mesa':'🪑',  'silla':'🪑', 'libro':'📖', 'niño':'👦',  'boca':'👄',
+      'mano':'✋',  'pelo':'💇',  'agua':'💧',  'cama':'🛏️', 'vaca':'🐄',
+      'pato':'🦆',  'sapo':'🐸',  'oso':'🐻',   'lobo':'🐺',  'rata':'🐀',
+      'loro':'🦜',  'puma':'🐆',  'coco':'🥥',  'uva':'🍇',   'pera':'🍐',
+      'piña':'🍍',  'toro':'🐂',  'rosa':'🌹',  'nube':'☁️',  'dedo':'☝️',
+      'codo':'💪',  'pie':'🦶',   'ojo':'👁️',  'cara':'😊',  'ropa':'👕',
+      'mono':'🐵',  'foca':'🦭',  'dado':'🎲',  'lana':'🧶',  'palo':'🪵',
+      'sopa':'🍲',  'bote':'⛵',  'taza':'☕',  'cuna':'🍼',  'lupa':'🔍',
       'tren':'🚂',
 
       // ── ESPAÑOL NIVEL 2 ──────────────────────────────────────
-      'pelota':'⚽','zapato':'👟','camisa':'👔','ventana':'🪟','tomate':'🍅',
-      'patata':'🥔','banana':'🍌','manzana':'🍎','naranja':'🍊','paloma':'🕊️',
-      'tortuga':'🐢','gallina':'🐔','conejo':'🐰','caballo':'🐴','oveja':'🐑',
-      'jirafa':'🦒','camello':'🐪','cebra':'🦓','tijera':'✂️','cuchara':'🥄',
-      'tenedor':'🍴','cuchillo':'🔪','cocina':'🍳','guitarra':'🎸','hamster':'🐹',
-      'sandía':'🍉','pepino':'🥒','tambor':'🥁','cereza':'🍒','cohete':'🚀',
-      'botella':'🍼','espejo':'🪞','colores':'🖍️','maleta':'🧳','corona':'👑',
-      'bufanda':'🧣','cigüeña':'🦢','planeta':'🪐','estrella':'⭐','cometa':'☄️',
-      'montaña':'⛰️','pingüino':'🐧','ballena':'🐋','linterna':'🔦','papaya':'🥭',
-      'maíz':'🌽','semilla':'🌱','canguro':'🦘','tobillo':'🦵','galleta':'🍪',
-      'paraguas':'☂️','langosta':'🦞',
+      'helado':'🍦',   'pelota':'⚽',   'zapato':'👟',   'camisa':'👔',   'ventana':'🪟',  'tomate':'🍅',
+      'patata':'🥔',   'banana':'🍌',   'manzana':'🍎',  'naranja':'🍊',  'paloma':'🕊️',
+      'tortuga':'🐢',  'gallina':'🐔',  'conejo':'🐰',   'caballo':'🐴',  'oveja':'🐑',
+      'jirafa':'🦒',   'camello':'🐪',  'cebra':'🦓',    'tijera':'✂️',   'cuchara':'🥄',
+      'tenedor':'🍴',  'cuchillo':'🔪', 'cocina':'🍳',   'guitarra':'🎸', 'hamster':'🐹',
+      'sandía':'🍉',   'pepino':'🥒',   'tambor':'🥁',   'cereza':'🍒',   'cohete':'🚀',
+      'botella':'🍼',  'espejo':'🪞',   'colores':'🖍️',  'maleta':'🧳',   'corona':'👑',
+      'bufanda':'🧣',  'cigüeña':'🦢',  'planeta':'🪐',  'estrella':'⭐', 'cometa':'☄️',
+      'montaña':'⛰️', 'pingüino':'🐧', 'ballena':'🐋',  'linterna':'🔦', 'papaya':'🥭',
+      'maíz':'🌽',     'semilla':'🌱',  'canguro':'🦘',  'tobillo':'🦵',  'galleta':'🍪',
+      'paraguas':'☂️', 'langosta':'🦞',
 
       // ── ESPAÑOL NIVEL 3 ──────────────────────────────────────
-      'mariposa':'🦋','elefante':'🐘','hipopótamo':'🦛','rinoceronte':'🦏',
-      'cocodrilo':'🐊','dinosaurio':'🦕','helicóptero':'🚁','computadora':'💻',
-      'television':'📺','refrigerador':'🧊','automóvil':'🚗','bicicleta':'🚲',
-      'motocicleta':'🏍️','paracaídas':'🪂','telescopio':'🔭','microscopio':'🔬',
-      'termómetro':'🌡️','calendario':'📅','diccionario':'📖','biblioteca':'📚',
-      'universidad':'🎓','laboratorio':'🧪','experimento':'🔬','astronauta':'👨‍🚀',
-      'videojuego':'🎮','fotografía':'📷','carretera':'🛣️','semáforo':'🚦',
-      'ambulancia':'🚑','medicina':'💊','enfermera':'👩‍⚕️','bombero':'👨‍🚒',
-      'policía':'👮','superhéroe':'🦸','princesa':'👸','unicornio':'🦄',
-      'arcoíris':'🌈','trampolín':'🤸','tobogán':'🛝','columpio':'🎢',
-      'carrusel':'🎠','payaso':'🤡','malabarista':'🤹','equilibrista':'🎪',
-      'acróbata':'🤸','trapecista':'🎪','domador':'🦁','zanahoria':'🥕',
-      'dragón':'🐉','circo':'🎪',
+      'mariposa':'🦋',     'elefante':'🐘',     'hipopótamo':'🦛',   'rinoceronte':'🦏',
+      'cocodrilo':'🐊',    'dinosaurio':'🦕',   'helicóptero':'🚁',  'computadora':'💻',
+      'television':'📺',   'refrigerador':'🧊', 'automóvil':'🚗',    'bicicleta':'🚲',
+      'motocicleta':'🏍️', 'paracaídas':'🪂',   'telescopio':'🔭',   'microscopio':'🔬',
+      'termómetro':'🌡️',  'calendario':'📅',   'diccionario':'📚',  'biblioteca':'📚',
+      'universidad':'🎓',  'laboratorio':'🧪',  'experimento':'🔬',  'astronauta':'👨‍🚀',
+      'videojuego':'🎮',   'fotografía':'📷',   'carretera':'🛣️',   'semáforo':'🚦',
+      'ambulancia':'🚑',   'medicina':'💊',     'enfermera':'👩‍⚕️', 'bombero':'👨‍🚒',
+      'policía':'👮',      'superhéroe':'🦸',   'princesa':'👸',     'unicornio':'🦄',
+      'arcoíris':'🌈',     'trampolín':'🤸',    'tobogán':'🛝',      'columpio':'🎢',
+      'carrusel':'🎠',     'payaso':'🤡',       'malabarista':'🤹',  'equilibrista':'🎪',
+      'acróbata':'🤸',     'trapecista':'🎪',   'domador':'🦁',      'zanahoria':'🥕',
+      'dragón':'🐉',       'circo':'🎪',
 
       // ── INGLÉS NIVEL 1 ───────────────────────────────────────
-      'sun':'☀️','cat':'🐱','dog':'🐶','moon':'🌙','star':'⭐',
-      'car':'🚗','tree':'🌳','book':'📖','ball':'⚽','bird':'🐦',
-      'fish':'🐟','frog':'🐸','bear':'🐻','duck':'🦆','egg':'🥚',
-      'hand':'✋','hat':'🎩','cup':'☕','key':'🔑','leaf':'🍃',
-      'milk':'🥛','pig':'🐷','ship':'🚢','shoe':'👟','sock':'🧦',
-      'tent':'⛺','toy':'🧸','train':'🚂','fox':'🦊','bee':'🐝',
-      'ant':'🐜','bat':'🦇','bed':'🛏️','box':'📦','bus':'🚌',
-      'cake':'🎂','flag':'🚩','house':'🏠','kite':'🪁','lamp':'💡',
-      'nest':'🪺','ring':'💍','wolf':'🐺','coat':'🧥','chair':'🪑',
-      'happy':'😊','baby':'👶','candy':'🍬','funny':'😄','sunny':'🌞',
-      'kitty':'🐱','puppy':'🐶',
+      'sun':'☀️',   'cat':'🐱',   'dog':'🐶',   'moon':'🌙',  'star':'⭐',
+      'car':'🚗',   'tree':'🌳',  'book':'📖',  'ball':'⚽',  'bird':'🐦',
+      'fish':'🐟',  'frog':'🐸',  'bear':'🐻',  'duck':'🦆',  'egg':'🥚',
+      'hand':'✋',  'hat':'🎩',   'cup':'☕',   'key':'🔑',   'leaf':'🍃',
+      'milk':'🥛',  'pig':'🐷',   'ship':'🚢',  'shoe':'👟',  'sock':'🧦',
+      'tent':'⛺',  'toy':'🧸',   'train':'🚂', 'fox':'🦊',   'bee':'🐝',
+      'ant':'🐜',   'bat':'🦇',   'bed':'🛏️',  'box':'📦',   'bus':'🚌',
+      'cake':'🎂',  'flag':'🚩',  'house':'🏠', 'kite':'🪁',  'lamp':'💡',
+      'nest':'🪺',  'ring':'💍',  'wolf':'🐺',  'coat':'🧥',  'chair':'🪑',
+      'happy':'😊', 'baby':'👶',  'candy':'🍬', 'funny':'😄', 'sunny':'🌞',
+      'kitty':'🐱', 'puppy':'🐶',
 
       // ── INGLÉS NIVEL 2 ───────────────────────────────────────
-      'apple':'🍎','water':'💧','pencil':'✏️','rabbit':'🐰','window':'🪟',
-      'monkey':'🐵','basket':'🧺','button':'🔘','carrot':'🥕','chicken':'🐔',
-      'cookie':'🍪','doctor':'👨‍⚕️','dragon':'🐉','finger':'☝️','flower':'🌸',
-      'garden':'🏡','hammer':'🔨','helmet':'⛑️','jacket':'🧥','kitten':'🐱',
-      'ladder':'🪜','lemon':'🍋','letter':'✉️','muffin':'🧁','orange':'🍊',
-      'panda':'🐼','parrot':'🦜','pepper':'🌶️','pillow':'🛏️','planet':'🪐',
-      'pocket':'👖','rocket':'🚀','robot':'🤖','sister':'👧','spider':'🕷️',
-      'tiger':'🐯','tomato':'🍅','turtle':'🐢','wallet':'👛','winter':'❄️',
-      'brother':'👦','birthday':'🎂','thunder':'⛈️','butter':'🧈','blanket':'🛏️',
-      'candle':'🕯️','cactus':'🌵','castle':'🏰','mitten':'🧤','number':'🔢',
+      'apple':'🍎',    'water':'💧',    'pencil':'✏️',   'rabbit':'🐰',   'window':'🪟',
+      'monkey':'🐵',   'basket':'🧺',   'button':'🔘',   'carrot':'🥕',   'chicken':'🐔',
+      'cookie':'🍪',   'doctor':'👨‍⚕️','dragon':'🐉',   'finger':'☝️',   'flower':'🌸',
+      'garden':'🏡',   'hammer':'🔨',   'helmet':'⛑️',   'jacket':'🧥',   'kitten':'🐱',
+      'ladder':'🪜',   'lemon':'🍋',    'letter':'✉️',   'muffin':'🧁',   'orange':'🍊',
+      'panda':'🐼',    'parrot':'🦜',   'pepper':'🌶️',  'pillow':'🛏️',  'planet':'🪐',
+      'mango':'🥭',    'rocket':'🚀',   'robot':'🤖',    'sister':'👧',   'spider':'🕷️',
+      'tiger':'🐯',    'tomato':'🍅',   'turtle':'🐢',   'mushroom':'🍄', 'winter':'❄️',
+      'brother':'👦',  'birthday':'🎂', 'thunder':'⛈️',  'butter':'🧈',   'scarf':'🧣',
+      'candle':'🕯️',  'cactus':'🌵',   'castle':'🏰',   'mitten':'🧤',   'puzzle':'🧩',
       'pickle':'🥒',
 
       // ── INGLÉS NIVEL 3 ───────────────────────────────────────
-      'butterfly':'🦋','elephant':'🐘','dinosaur':'🦕','hamburger':'🍔',
-      'helicopter':'🚁','umbrella':'☂️','telephone':'📱','computer':'💻',
-      'television':'📺','kangaroo':'🦘','watermelon':'🍉','strawberry':'🍓',
-      'chocolate':'🍫','photograph':'📷','basketball':'🏀','motorcycle':'🏍️',
-      'crocodile':'🐊','octopus':'🐙','caterpillar':'🐛','blueberry':'🫐',
-      'pineapple':'🍍','avocado':'🥑','broccoli':'🥦','ambulance':'🚑',
-      'astronaut':'👨‍🚀','microscope':'🔬','telescope':'🔭','thermometer':'🌡️',
-      'calculator':'🧮','dictionary':'📖','library':'📚','hospital':'🏥',
-      'trampoline':'🤸','parachute':'🪂','binoculars':'🔭','alligator':'🐊',
-      'jellyfish':'🪼','dragonfly':'🦋','ladybug':'🐞','raspberry':'🍇',
-      'cauliflower':'🥦','supermarket':'🛒','restaurant':'🍽️','playground':'🛝',
-      'accordion':'🪗','xylophone':'🎵','harmonica':'🎵','vegetables':'🥗',
-      'volcano':'🌋','centipede':'🐛','university':'🎓'
+      'butterfly':'🦋',   'elephant':'🐘',    'dinosaur':'🦕',    'hamburger':'🍔',
+      'helicopter':'🚁',  'umbrella':'☂️',    'telephone':'📱',   'computer':'💻',
+      'television':'📺',  'kangaroo':'🦘',    'watermelon':'🍉',  'strawberry':'🍓',
+      'chocolate':'🍫',   'photograph':'📷',  'basketball':'🏀',  'motorcycle':'🏍️',
+      'crocodile':'🐊',   'octopus':'🐙',     'caterpillar':'🐛', 'blueberry':'🫐',
+      'pineapple':'🍍',   'avocado':'🥑',     'broccoli':'🥦',    'ambulance':'🚑',
+      'astronaut':'👨‍🚀','microscope':'🔬',  'telescope':'🔭',   'thermometer':'🌡️',
+      'calculator':'🧮',  'dictionary':'📚',  'library':'📚',     'hospital':'🏥',
+      'trampoline':'🤸',  'parachute':'🪂',   'binoculars':'🔭',  'alligator':'🐊',
+      'jellyfish':'🪼',   'dragonfly':'🦟',   'ladybug':'🐞',     'raspberry':'🍓',
+      'cauliflower':'🥦', 'supermarket':'🛒', 'restaurant':'🍽️', 'playground':'🛝',
+      'accordion':'🪗',   'xylophone':'🎼',   'harmonica':'🎷',   'vegetables':'🥗',
+      'volcano':'🌋',     'centipede':'🐛',   'university':'🎓'
     };
 
-    // Buscar por palabra exacta, luego en minúsculas
     return emojiMap[word] || emojiMap[word.toLowerCase()] || '📝';
   }
 
