@@ -412,7 +412,7 @@ checkStudentCode() {
       { id: "en_r088", word: "DOCTOR", rhyme: "PROCTOR", difficulty: 2, language: "en" },
       { id: "en_r089", word: "PAINTER", rhyme: "FAINTER", difficulty: 2, language: "en" },
       { id: "en_r090", word: "SINGER", rhyme: "RINGER", difficulty: 2, language: "en" },
-      { id: "en_r091", word: "DANCER", rhyme: "CANCER", difficulty: 2, language: "en" },
+      { id: "en_r091", word: "DANCER", rhyme: "ANSWER", difficulty: 2, language: "en" },
       { id: "en_r092", word: "WRITER", rhyme: "FIGHTER", difficulty: 2, language: "en" },
       { id: "en_r093", word: "BAKER", rhyme: "MAKER", difficulty: 2, language: "en" },
       { id: "en_r094", word: "SAILOR", rhyme: "TAILOR", difficulty: 2, language: "en" },

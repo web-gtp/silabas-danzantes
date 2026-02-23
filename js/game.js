@@ -967,7 +967,7 @@ loadFallbackData() {
       'pickle':'🥒',
 
       // ── INGLÉS NIVEL 3 ───────────────────────────────────────
-      'butterfly':'🦋',   'elephant':'🐘',    'dinosaur':'🦕',    'hamburger':'🍔',
+      'bicycle':'🚲', 'butterfly':'🦋',   'elephant':'🐘',    'dinosaur':'🦕',    'hamburger':'🍔',
       'helicopter':'🚁',  'umbrella':'☂️',    'telephone':'📱',   'computer':'💻',
       'television':'📺',  'kangaroo':'🦘',    'watermelon':'🍉',  'strawberry':'🍓',
       'chocolate':'🍫',   'photograph':'📷',  'basketball':'🏀',  'motorcycle':'🏍️',
