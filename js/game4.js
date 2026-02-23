@@ -84,30 +84,63 @@ class RimasDivertidasGame {
   }
 
 checkStudentCode() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    if (code) {
-      document.getElementById('studentCodeInput').value = code;
-    }
-    const lang = urlParams.get('lang');
-    if (lang === 'es' || lang === 'en') {
-      this.currentLanguage = lang;
-      if (lang === 'es') {
-        this.elements.langBtnEs.classList.add('lang-btn--active');
-        this.elements.langBtnEn.classList.remove('lang-btn--active');
-      } else {
-        this.elements.langBtnEn.classList.add('lang-btn--active');
-        this.elements.langBtnEs.classList.remove('lang-btn--active');
-      }
-    }
-    const diff = parseInt(urlParams.get('diff'));
-    if (diff === 1 || diff === 2 || diff === 3) {
-      this.currentDifficulty = diff;
-      if (this.elements.difficultySelect) {
-        this.elements.difficultySelect.value = String(diff);
-      }
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
+  const lang = urlParams.get('lang');
+  const diff = parseInt(urlParams.get('diff'));
+
+  // Código de estudiante
+  if (code) {
+    this.studentCode = code;
+    const codeInput = document.getElementById('studentCodeInput');
+    if (codeInput) codeInput.value = code;
+  } else {
+    // Fallback: si no viene code y tienes en SessionManager, úsalo
+    const saved = SessionManager.load && SessionManager.load();
+    if (saved && saved.studentCode) {
+      this.studentCode = saved.studentCode;
+      const codeInput = document.getElementById('studentCodeInput');
+      if (codeInput) codeInput.value = saved.studentCode;
     }
   }
+
+  // Idioma
+  if (lang === 'es' || lang === 'en') {
+    this.currentLanguage = lang;
+  } else {
+    // Fallback: si NO viene lang en URL, usa el guardado por SessionManager
+    const saved = SessionManager.load && SessionManager.load();
+    if (saved && saved.language) {
+      this.currentLanguage = saved.language;
+    }
+  }
+
+  // Botones del idioma
+  if (this.elements && this.elements.langBtnEs && this.elements.langBtnEn) {
+    if (this.currentLanguage === 'es') {
+      this.elements.langBtnEs.classList.add('lang-btn--active');
+      this.elements.langBtnEn.classList.remove('lang-btn--active');
+    } else {
+      this.elements.langBtnEn.classList.add('lang-btn--active');
+      this.elements.langBtnEs.classList.remove('lang-btn--active');
+    }
+  }
+
+  // Dificultad
+  if (diff === 1 || diff === 2 || diff === 3) {
+    this.currentDifficulty = diff;
+  } else {
+    // Fallback: si NO viene dificultad en URL, usa el guardado por SessionManager
+    const saved = SessionManager.load && SessionManager.load();
+    if (saved && saved.difficulty) {
+      this.currentDifficulty = saved.difficulty;
+    }
+  }
+  // Actualizar select de dificultad según valor actual
+  if (this.elements.difficultySelect) {
+    this.elements.difficultySelect.value = String(this.currentDifficulty);
+  }
+}
 
   async handleStudentCodeSubmit() {
     try {

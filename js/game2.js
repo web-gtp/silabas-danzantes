@@ -92,6 +92,22 @@ checkStudentCode() {
   const lang = urlParams.get('lang');
   const diff = parseInt(urlParams.get('diff'));
 
+// Fallback: si NO viene lang en URL, usa el guardado por SessionManager
+  if (!lang) {
+    const saved = SessionManager.load && SessionManager.load();
+    if (saved && saved.language) {
+      this.currentLanguage = saved.language;
+    }
+  }
+
+  // Igual para diff (dificultad)
+  if (!(diff === 1 || diff === 2 || diff === 3)) {
+    const saved = SessionManager.load && SessionManager.load();
+    if (saved && saved.difficulty) {
+      this.currentDifficulty = saved.difficulty;
+    }
+  }
+
   if (code) {
     this.studentCode = code;
     const codeInput = document.getElementById('studentCodeInput');
