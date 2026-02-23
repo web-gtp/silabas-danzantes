@@ -923,7 +923,7 @@ loadFallbackData() {
       'bufanda':'🧣',  'cigüeña':'🦢',  'planeta':'🪐',  'estrella':'⭐', 'cometa':'☄️',
       'montaña':'⛰️', 'pingüino':'🐧', 'ballena':'🐋',  'linterna':'🔦', 'papaya':'🥭',
       'maíz':'🌽',     'semilla':'🌱',  'canguro':'🦘',  'tobillo':'🦵',  'galleta':'🍪',
-      'paraguas':'☂️', 'langosta':'🦞',
+      'paraguas':'☂️', 'langosta':'🦞','corazón':'❤️',
 
       // ── ESPAÑOL NIVEL 3 ──────────────────────────────────────
       'mariposa':'🦋',     'elefante':'🐘',     'hipopótamo':'🦛',   'rinoceronte':'🦏',
@@ -964,7 +964,7 @@ loadFallbackData() {
       'tiger':'🐯',    'tomato':'🍅',   'turtle':'🐢',   'mushroom':'🍄', 'winter':'❄️',
       'brother':'👦',  'birthday':'🎂', 'thunder':'⛈️',  'butter':'🧈',   'scarf':'🧣',
       'candle':'🕯️',  'cactus':'🌵',   'castle':'🏰',   'mitten':'🧤',   'puzzle':'🧩',
-      'pickle':'🥒',
+      'pickle':'🥒','penguin':'🐧',
 
       // ── INGLÉS NIVEL 3 ───────────────────────────────────────
       'bicycle':'🚲', 'butterfly':'🦋',   'elephant':'🐘',    'dinosaur':'🦕',    'hamburger':'🍔',

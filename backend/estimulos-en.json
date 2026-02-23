@@ -50,8 +50,9 @@
   "en_f049": {"id":"en_f049","word":"funny",  "syllables":["fun","ny"], "emoji":"😄","pronunciation":"funny.mp3",  "image":"funny.png",  "difficulty":1,"frequency":3},
   "en_f050": {"id":"en_f050","word":"sunny",  "syllables":["sun","ny"], "emoji":"🌞","pronunciation":"sunny.mp3",  "image":"sunny.png",  "difficulty":1,"frequency":3},
   "en_f051": {"id":"en_f051","word":"kitty",  "syllables":["kit","ty"], "emoji":"🐱","pronunciation":"kitty.mp3",  "image":"kitty.png",  "difficulty":1,"frequency":3},
-  "en_f052": {"id":"en_f052","word":"puppy",  "syllables":["pup","py"], "emoji":"🐶","pronunciation":"puppy.mp3",  "image":"puppy.png",  "difficulty":1,"frequency":4},
-
+  "en_f052": {"id":"en_f052","word":"puppy",  "syllables":["pup","py"], "emoji":"🐶","pronunciation":"puppy.mp3",  "image":"puppy.png",  "difficulty":1,"frequency":3},
+  "en_f053": {"id":"en_f053","word":"penguin","syllables":["pen","guin"],"emoji":"🐧","pronunciation":"penguin.mp3","image":"penguin.png", "difficulty":1,"frequency":3},
+  
   "en_n001": {"id":"en_n001","word":"apple",    "syllables":["ap","ple"],      "emoji":"🍎","pronunciation":"apple.mp3",    "image":"apple.png",    "difficulty":2,"frequency":5},
   "en_n002": {"id":"en_n002","word":"water",    "syllables":["wa","ter"],      "emoji":"💧","pronunciation":"water.mp3",    "image":"water.png",    "difficulty":2,"frequency":5},
   "en_n003": {"id":"en_n003","word":"pencil",   "syllables":["pen","cil"],     "emoji":"✏️","pronunciation":"pencil.mp3",   "image":"pencil.png",   "difficulty":2,"frequency":4},

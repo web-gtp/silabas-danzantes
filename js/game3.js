@@ -23,19 +23,23 @@ class PalabrasSecretasGame {
     this.elements = {};
   }
 
-  async init() {
-    Logger.log('🔤 Inicializando Palabras Secretas...');
-    try {
-      this.cacheElements();
-      this.loadWordsData();
-      this.setupEventListeners();
-      this.checkStudentCode();
-      Logger.log('✅ Juego 3 inicializado correctamente');
-    } catch (error) {
-      Logger.error('Error inicializando juego 3', error);
-      alert('Error inicializando el juego. Por favor recarga la página.');
-    }
+async init() {
+  Logger.log('🔤 Inicializando Palabras Secretas...');
+  try {
+    // PRIMERO detecta idioma y código/dificultad de la URL
+    this.checkStudentCode();  
+    // Luego cachea elementos
+    this.cacheElements();
+    // Carga palabras según idioma definido
+    this.loadWordsData();
+    // Configura eventos
+    this.setupEventListeners();
+    Logger.log('✅ Juego 3 inicializado correctamente');
+  } catch (error) {
+    Logger.error('Error inicializando juego 3', error);
+    alert('Error inicializando el juego. Por favor recarga la página.');
   }
+}
 
   cacheElements() {
     this.elements = {
@@ -93,15 +97,24 @@ class PalabrasSecretasGame {
     Logger.log('✅ Event listeners configurados');
   }
 
- checkStudentCode() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    if (code) {
-      document.getElementById('studentCodeInput').value = code;
+checkStudentCode() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
+  const lang = urlParams.get('lang');
+  const diff = parseInt(urlParams.get('diff'));
+
+  if (code) {
+    this.studentCode = code;
+    const codeInput = document.getElementById('studentCodeInput');
+    if (codeInput) codeInput.value = code;
+  }
+  if (lang === 'es' || lang === 'en') {
+    this.currentLanguage = lang;
+    // Marca botones activos después de cachear elementos
+    if (this.cacheElements && typeof this.cacheElements === 'function') {
+      this.cacheElements();
     }
-    const lang = urlParams.get('lang');
-    if (lang === 'es' || lang === 'en') {
-      this.currentLanguage = lang;
+    if (this.elements && this.elements.langBtnEs && this.elements.langBtnEn) {
       if (lang === 'es') {
         this.elements.langBtnEs.classList.add('lang-btn--active');
         this.elements.langBtnEn.classList.remove('lang-btn--active');
@@ -110,14 +123,14 @@ class PalabrasSecretasGame {
         this.elements.langBtnEs.classList.remove('lang-btn--active');
       }
     }
-    const diff = parseInt(urlParams.get('diff'));
-    if (diff === 1 || diff === 2 || diff === 3) {
-      this.currentDifficulty = diff;
-      if (this.elements.difficultySelect) {
-        this.elements.difficultySelect.value = String(diff);
-      }
+  }
+  if (diff === 1 || diff === 2 || diff === 3) {
+    this.currentDifficulty = diff;
+    if (this.elements.difficultySelect) {
+      this.elements.difficultySelect.value = String(diff);
     }
   }
+}
 
   async handleStudentCodeSubmit() {
     try {
