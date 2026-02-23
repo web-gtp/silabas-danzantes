@@ -24,19 +24,23 @@ class MemoriaMagicaGame {
     this.elements = {};
   }
 
-  async init() {
-    Logger.log('🧠 Inicializando Memoria Mágica...');
-    try {
-      this.cacheElements();
-      this.loadPairsData();
-      this.setupEventListeners();
-      this.checkStudentCode();
-      Logger.log('✅ Juego 2 inicializado correctamente');
-    } catch (error) {
-      Logger.error('Error inicializando juego 2', error);
-      alert('Error inicializando el juego. Por favor recarga la página.');
-    }
+ async init() {
+  Logger.log('🧠 Inicializando Memoria Mágica...');
+  try {
+    // PRIMERO detecta idioma y código
+    this.checkStudentCode();
+    // Luego cachea elementos
+    this.cacheElements();
+    // Carga pares según idioma definido
+    this.loadPairsData();
+    // Configura eventos
+    this.setupEventListeners();
+    Logger.log('✅ Juego 2 inicializado correctamente');
+  } catch (error) {
+    Logger.error('Error inicializando juego 2', error);
+    alert('Error inicializando el juego. Por favor recarga la página.');
   }
+}
 
   cacheElements() {
     this.elements = {
@@ -82,15 +86,24 @@ class MemoriaMagicaGame {
     Logger.log('✅ Event listeners configurados');
   }
 
-  checkStudentCode() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    if (code) {
-      document.getElementById('studentCodeInput').value = code;
+checkStudentCode() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
+  const lang = urlParams.get('lang');
+  const diff = parseInt(urlParams.get('diff'));
+
+  if (code) {
+    this.studentCode = code;
+    const codeInput = document.getElementById('studentCodeInput');
+    if (codeInput) codeInput.value = code;
+  }
+  if (lang === 'es' || lang === 'en') {
+    this.currentLanguage = lang;
+    // Marca botones como activos en el DOM
+    if (this.cacheElements && typeof this.cacheElements === 'function') {
+      this.cacheElements();
     }
-    const lang = urlParams.get('lang');
-    if (lang === 'es' || lang === 'en') {
-      this.currentLanguage = lang;
+    if (this.elements && this.elements.langBtnEs && this.elements.langBtnEn) {
       if (lang === 'es') {
         this.elements.langBtnEs.classList.add('lang-btn--active');
         this.elements.langBtnEn.classList.remove('lang-btn--active');
@@ -99,14 +112,14 @@ class MemoriaMagicaGame {
         this.elements.langBtnEs.classList.remove('lang-btn--active');
       }
     }
-    const diff = parseInt(urlParams.get('diff'));
-    if (diff === 1 || diff === 2 || diff === 3) {
-      this.currentDifficulty = diff;
-      if (this.elements.difficultySelect) {
-        this.elements.difficultySelect.value = String(diff);
-      }
+  }
+  if (diff === 1 || diff === 2 || diff === 3) {
+    this.currentDifficulty = diff;
+    if (this.elements.difficultySelect) {
+      this.elements.difficultySelect.value = String(diff);
     }
   }
+}
 
   async handleStudentCodeSubmit() {
     try {

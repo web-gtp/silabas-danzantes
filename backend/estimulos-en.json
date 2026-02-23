@@ -150,7 +150,7 @@
   "en_d044": {"id":"en_d044","word":"playground",  "syllables":["play","ground"],         "emoji":"🛝","pronunciation":"playground.mp3",  "image":"playground.png",  "difficulty":3,"frequency":3},
   "en_d045": {"id":"en_d045","word":"accordion",   "syllables":["ac","cor","di","on"],    "emoji":"🪗","pronunciation":"accordion.mp3",   "image":"accordion.png",   "difficulty":3,"frequency":2},
   "en_d046": {"id":"en_d046","word":"xylophone",   "syllables":["xy","lo","phone"],       "emoji":"🎵","pronunciation":"xylophone.mp3",   "image":"xylophone.png",   "difficulty":3,"frequency":2},
-  "en_d047": {"id":"en_d047","word":"harmonica",   "syllables":["har","mon","i","ca"],    "emoji":"🎵","pronunciation":"harmonica.mp3",   "image":"harmonica.png",   "difficulty":3,"frequency":2},
+  "en_d047": {"id":"en_d047","word":"harmonica",   "syllables":["har","mon","i","ca"],    "emoji":"🎶","pronunciation":"harmonica.mp3",   "image":"harmonica.png",   "difficulty":3,"frequency":2},
   "en_d048": {"id":"en_d048","word":"vegetables",  "syllables":["veg","e","ta","bles"],   "emoji":"🥗","pronunciation":"vegetables.mp3",  "image":"vegetables.png",  "difficulty":3,"frequency":3},
   "en_d049": {"id":"en_d049","word":"volcano",     "syllables":["vol","ca","no"],         "emoji":"🌋","pronunciation":"volcano.mp3",     "image":"volcano.png",     "difficulty":3,"frequency":2},
   "en_d051": {"id":"en_d051","word":"university",  "syllables":["u","ni","ver","si","ty"],"emoji":"🎓","pronunciation":"university.mp3",  "image":"university.png",  "difficulty":3,"frequency":2},
