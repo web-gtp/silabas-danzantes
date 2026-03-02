@@ -1,444 +1,284 @@
 /* =============================================
-   ESTILOS ESPECÍFICOS - JUEGO 2: MEMORIA MÁGICA
+   ESTILOS - JUEGO 2: MEMORIA DE TRABAJO SECUENCIAL
+   Tema: Rosa (#FF6B9D)
    ============================================= */
 
-/* TEMA DEL JUEGO 2 (Color rosa) */
+/* TEMA ---------------- */
 .game-header--game2 {
   background: linear-gradient(135deg, #FF6B9D 0%, #C06C84 100%);
 }
-
 .btn-start--game2 {
   background: linear-gradient(135deg, #FF6B9D 0%, #C06C84 100%);
   animation: pulse 2s infinite;
 }
-
 .btn-start--game2:hover {
   transform: scale(1.1) !important;
   box-shadow: 0 10px 25px rgba(255, 107, 157, 0.6);
 }
 
-/* =============================================
-   FORMULARIO DE CÓDIGO DE ESTUDIANTE
-   ============================================= */
+/* FORMULARIO ---------- */
+.student-code-form { width: 100%; max-width: 500px; margin: 0 auto; }
+.form-input--large { font-size: 24px !important; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
 
-.student-code-form {
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.form-input--large {
-  font-size: 24px !important;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* =============================================
-   ESTADÍSTICAS DEL JUEGO
-   ============================================= */
-
+/* STATS EN JUEGO ------ */
 .game-stats {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
+  display: flex; justify-content: center; gap: 20px;
+  margin-bottom: 20px; flex-wrap: wrap;
 }
-
 .stat-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: white;
-  padding: 15px 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  font-size: 18px;
-  font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+  background: white; padding: 12px 20px; border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 16px; font-weight: 600;
 }
-
-.stat-item .stat-icon {
-  font-size: 24px;
-}
-
-.stat-item .stat-value {
-  color: #FF6B9D;
+.stat-item .stat-icon { font-size: 22px; }
+.stat-item .stat-value { color: #FF6B9D; font-size: 20px; font-weight: 700; }
+.stat-item .stat-value.highlight {
+  color: #fff; background: #FF6B9D; padding: 2px 12px; border-radius: 10px;
   font-size: 22px;
-  font-weight: 700;
+}
+
+/* INFO DE SESIÓN */
+.active-session-info {
+  text-align: center; font-size: 14px; color: #888;
+  margin-bottom: 10px; font-weight: 600;
 }
 
 /* =============================================
-   TABLERO DE CARTAS
+   ZONA DE PRESENTACIÓN DE SECUENCIA
    ============================================= */
-
-.card-board {
-  display: grid;
-  gap: 15px;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Grid responsivo según dificultad */
-.card-board--easy {
-  grid-template-columns: repeat(3, 1fr);
+.sequence-display {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 300px; margin: 0 auto 20px;
   max-width: 500px;
 }
 
-.card-board--normal {
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 700px;
+.sequence-instruction {
+  text-align: center; animation: fadeIn 0.5s ease;
+}
+.instruction-icon { font-size: 64px; margin-bottom: 10px; }
+.instruction-text { font-size: 22px; font-weight: 700; color: #2C3E50; }
+.span-badge {
+  display: inline-block; margin-top: 12px; padding: 8px 20px;
+  background: linear-gradient(135deg, #FF6B9D, #C06C84);
+  color: #fff; border-radius: 20px; font-size: 18px; font-weight: 700;
 }
 
-.card-board--hard {
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 800px;
+/* Mostrar un ítem de la secuencia */
+.sequence-item-show {
+  text-align: center; animation: popIn 0.4s ease;
 }
+.sequence-counter {
+  font-size: 16px; font-weight: 700; color: #C06C84; margin-bottom: 10px;
+}
+.sequence-emoji { font-size: 96px; margin-bottom: 10px; }
+.sequence-word {
+  font-size: 32px; font-weight: 700; color: #2C3E50;
+  text-transform: uppercase; letter-spacing: 2px;
+}
+
+.sequence-pause {
+  font-size: 48px; color: #ccc; animation: fadeIn 0.3s ease;
+}
+
+.sequence-transition { text-align: center; animation: fadeIn 0.5s ease; }
+.transition-icon { font-size: 64px; margin-bottom: 10px; }
+.transition-text { font-size: 22px; font-weight: 700; color: #FF6B9D; }
 
 /* =============================================
-   CARTAS - EFECTO DE VOLTEO 3D
+   ZONA DE RECUERDO (RECALL)
    ============================================= */
+.recall-area { max-width: 600px; margin: 0 auto; }
 
-.memory-card {
-  position: relative;
-  aspect-ratio: 1;
-  cursor: pointer;
-  perspective: 1000px;
-  transition: transform 0.2s;
+.recall-instruction {
+  text-align: center; font-size: 18px; font-weight: 700;
+  color: #2C3E50; margin-bottom: 15px;
 }
 
-.memory-card:hover {
-  transform: scale(1.05);
+/* Slots del jugador (respuesta en orden) */
+.player-slots {
+  display: flex; justify-content: center; gap: 10px;
+  margin-bottom: 20px; flex-wrap: wrap;
 }
-
-.memory-card:active {
-  transform: scale(0.95);
+.player-slot {
+  width: 70px; height: 70px;
+  border: 3px dashed #FF6B9D; border-radius: 15px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 107, 157, 0.05);
+  transition: all 0.3s;
 }
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
+.player-slot .slot-number {
+  font-size: 24px; font-weight: 700; color: #ccc;
 }
-
-/* Cuando la carta se voltea */
-.memory-card.flipped .card-inner,
-.memory-card.matched .card-inner {
-  transform: rotateY(180deg);
+.player-slot .slot-emoji { font-size: 36px; }
+.player-slot.slot-filled {
+  border-style: solid; border-color: #FF6B9D;
+  background: rgba(255, 107, 157, 0.1);
+  animation: popIn 0.3s ease;
 }
-
-.card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+.player-slot.slot-correct {
+  border-color: #4CAF50; background: rgba(76, 175, 80, 0.15);
 }
-
-/* Cara frontal (oculta) */
-.card-front {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.card-front-icon {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.card-front-text {
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* Cara trasera (emoji + palabra) */
-.card-back {
-  background: white;
-  transform: rotateY(180deg);
-  border: 3px solid #FF6B9D;
-}
-
-.card-back-emoji {
-  font-size: 64px;
-  margin-bottom: 10px;
-}
-
-.card-back-text {
-  font-size: 18px;
-  font-weight: 700;
-  color: #2C3E50;
-  text-align: center;
-  word-wrap: break-word;
-}
-
-/* Cartas emparejadas (color verde) */
-.memory-card.matched .card-back {
-  background: linear-gradient(135deg, #95E1D3 0%, #4ECDC4 100%);
-  border-color: #4ECDC4;
-  animation: matchPulse 0.5s;
-}
-
-@keyframes matchPulse {
-  0%, 100% {
-    transform: rotateY(180deg) scale(1);
-  }
-  50% {
-    transform: rotateY(180deg) scale(1.1);
-  }
-}
-
-/* Cartas incorrectas (animación de shake) */
-.memory-card.wrong {
+.player-slot.slot-wrong {
+  border-color: #E74C3C; background: rgba(231, 76, 60, 0.15);
   animation: shake 0.5s;
 }
 
-@keyframes shake {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-10px);
-  }
-  75% {
-    transform: translateX(10px);
-  }
+/* Grid de opciones para seleccionar */
+.options-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px; max-width: 600px; margin: 0 auto;
 }
-
-/* Deshabilitar clics durante verificación */
-.card-board.disabled {
-  pointer-events: none;
+.recall-option {
+  background: white; border: 3px solid #e0e0e0; border-radius: 15px;
+  padding: 15px 10px; cursor: pointer; transition: all 0.2s;
+  text-align: center; display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+}
+.recall-option:hover {
+  transform: translateY(-3px); border-color: #FF6B9D;
+  box-shadow: 0 6px 15px rgba(255, 107, 157, 0.3);
+}
+.recall-option:active { transform: translateY(0); }
+.recall-option .option-emoji { font-size: 40px; }
+.recall-option .option-word { font-size: 14px; font-weight: 600; color: #555; }
+.recall-option.option-selected {
+  opacity: 0.4; pointer-events: none; border-color: #ddd;
+  background: #f5f5f5;
 }
 
 /* =============================================
-   BOTÓN VOLVER
+   FEEDBACK BANNER
    ============================================= */
+.feedback-banner {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  padding: 30px 40px; border-radius: 20px; text-align: center;
+  z-index: 1000; animation: popIn 0.4s ease;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  max-width: 90vw;
+}
+.feedback-correct {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  border: 3px solid #28a745;
+}
+.feedback-wrong {
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  border: 3px solid #dc3545;
+}
+.feedback-icon { font-size: 48px; margin-bottom: 10px; }
+.feedback-text { font-size: 22px; font-weight: 700; color: #2C3E50; }
+.feedback-detail { font-size: 16px; color: #555; margin-top: 5px; }
+.correct-sequence {
+  display: flex; gap: 10px; justify-content: center;
+  margin-top: 10px; flex-wrap: wrap;
+}
+.correct-item {
+  background: white; padding: 5px 12px; border-radius: 10px;
+  font-size: 18px; font-weight: 600;
+}
 
-.btn-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 30px;
-  background: linear-gradient(135deg, #95A5A6 0%, #7F8C8D 100%);
+/* =============================================
+   PANTALLA DE RESULTADOS
+   ============================================= */
+.end-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 15px; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;
+}
+.stat-card {
+  background: white; border-radius: 15px; padding: 20px;
+  text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.stat-card--primary {
+  background: linear-gradient(135deg, #FF6B9D, #C06C84);
   color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  margin-top: 20px;
-  font-family: var(--font-main);
+}
+.stat-card--primary .stat-label { color: rgba(255,255,255,0.9); }
+.stat-card .stat-icon { font-size: 28px; margin-bottom: 5px; }
+.stat-card .stat-label { font-size: 12px; font-weight: 600; color: #888; text-transform: uppercase; }
+.stat-card .stat-value { font-size: 24px; font-weight: 700; color: #2C3E50; }
+.stat-card--primary .stat-value { color: white; }
+.stat-value--big { font-size: 48px !important; }
+
+.end-message {
+  text-align: center; font-size: 20px; font-weight: 700;
+  color: #2C3E50; margin: 20px 0; padding: 15px;
+  background: #FFF9C4; border-radius: 15px;
 }
 
-.btn-back:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-
-.btn-restart {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 30px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-top: 20px;
-  font-family: var(--font-main);
-}
-
-.btn-restart:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-
-/* =============================================
-   RESPONSIVE - MÓVIL
-   ============================================= */
-
-@media (max-width: 768px) {
-  .game-stats {
-    gap: 15px;
-  }
-  
-  .stat-item {
-    padding: 10px 15px;
-    font-size: 14px;
-  }
-  
-  .stat-item .stat-icon {
-    font-size: 20px;
-  }
-  
-  .stat-item .stat-value {
-    font-size: 18px;
-  }
-  
-  .card-board {
-    gap: 10px;
-    padding: 10px;
-  }
-  
-  .card-board--easy {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 350px;
-  }
-  
-  .card-board--normal {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 400px;
-  }
-  
-  .card-board--hard {
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 450px;
-  }
-  
-  .card-front-icon {
-    font-size: 32px;
-  }
-  
-  .card-front-text {
-    font-size: 12px;
-  }
-  
-  .card-back-emoji {
-    font-size: 40px;
-  }
-  
-  .card-back-text {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .card-board--hard {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
-  .card-back-emoji {
-    font-size: 32px;
-  }
-  
-  .card-back-text {
-    font-size: 12px;
-  }
-  
-  .btn-back,
-  .btn-restart {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* =============================================
-   ANIMACIÓN DE VICTORIA (CONFETTI)
-   ============================================= */
-
-@keyframes confetti {
-  0% {
-    transform: translateY(-100vh) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(720deg);
-    opacity: 0;
-  }
-}
-
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: #FF6B9D;
-  top: -10px;
-  animation: confetti 3s linear;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* =============================================
-   SECCIÓN SIGUIENTE JUEGO
-   ============================================= */
-
+/* Next game section */
 .next-game-section {
-  margin: 30px 0;
-  padding: 25px;
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  text-align: center; margin: 25px 0; padding: 20px;
+  background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
   border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
 }
-
-.next-game-title {
-  color: white;
-  font-size: 24px;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.next-game-text {
-  color: rgba(255,255,255,0.9);
-  font-size: 18px;
-  margin-bottom: 20px;
-  font-weight: 500;
-}
-
+.next-game-title { font-size: 18px; color: #2E7D32; }
+.next-game-text { font-size: 16px; color: #555; margin: 8px 0 15px; }
 .btn-next-game {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: white;
-  color: #4CAF50;
-  padding: 15px 40px;
-  font-size: 20px;
-  font-weight: 700;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  font-family: var(--font-main);
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white; border: none; padding: 15px 30px;
+  border-radius: 12px; font-size: 18px; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
 }
-
 .btn-next-game:hover {
-  transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transform: scale(1.05); box-shadow: 0 8px 20px rgba(76,175,80,0.4);
 }
 
-@media (max-width: 768px) {
-  .next-game-section {
-    padding: 20px;
-  }
-  
-  .next-game-title {
-    font-size: 20px;
-  }
-  
-  .next-game-text {
-    font-size: 16px;
-  }
-  
-  .btn-next-game {
-    width: 100%;
-    justify-content: center;
-    padding: 12px 30px;
-    font-size: 18px;
-  }
+.btn-restart, .btn-back {
+  display: block; width: 100%; max-width: 300px;
+  margin: 10px auto; padding: 15px; border-radius: 12px;
+  font-size: 16px; font-weight: 700; text-align: center;
+  cursor: pointer; transition: all 0.3s; text-decoration: none;
+  border: none;
+}
+.btn-restart {
+  background: #f0f0f0; color: #555;
+}
+.btn-back {
+  background: #e8e8e8; color: #777;
+}
+.btn-restart:hover, .btn-back:hover {
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   ANIMACIONES
+   ============================================= */
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* TIMER */
+.game-timer {
+  position: fixed; top: 80px; right: 20px;
+  background: rgba(0,0,0,0.7); color: white;
+  padding: 8px 16px; border-radius: 20px;
+  font-size: 16px; font-weight: 700; z-index: 100;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 480px) {
+  .sequence-emoji { font-size: 72px; }
+  .sequence-word { font-size: 24px; }
+  .player-slot { width: 55px; height: 55px; }
+  .player-slot .slot-emoji { font-size: 28px; }
+  .recall-option .option-emoji { font-size: 32px; }
+  .options-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+  .feedback-banner { padding: 20px; }
+  .stat-value--big { font-size: 36px !important; }
 }

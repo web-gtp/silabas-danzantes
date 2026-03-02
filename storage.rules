@@ -1,0 +1,19 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Imágenes de estímulos: lectura pública, escritura restringida
+    match /images/{language}/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null 
+                   && request.resource.size < 2 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+    
+    // Audio (si se agrega en el futuro)
+    match /audio/{language}/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.resource.size < 5 * 1024 * 1024;
+    }
+  }
+}

@@ -656,75 +656,6 @@ loadFallbackData() {
   }
 
   // ============================================================
-  // START GAME — Filtrar y preparar pool sin repetición
-  // ============================================================
-  async startGame() {
-    try {
-      const difficulty = this.currentDifficulty;
-      if (!ValidationUtils.isValidDifficulty(difficulty)) { alert('Nivel inválido'); return; }
-
-      this.currentQuestion   = 0;
-      this.totalScore        = 0;
-      this.correctAnswers    = 0;
-      this.allResponses      = [];
-      this.selectedSyllables = [];
-      this.elements.scoreValue.textContent = '0';
-
-      const filtered = this.stimuli.filter(s => {
-        const d = s.difficulty !== undefined
-          ? s.difficulty
-          : CalculationUtils.calculateDifficulty(s.syllables.length);
-        return d === difficulty;
-      });
-
-      if (filtered.length === 0) {
-        alert(`No hay palabras de nivel ${difficulty} en ${this.currentLanguage}`); return;
-      }
-
-      Logger.log(`🎮 ${filtered.length} palabras disponibles | ${this.currentLanguage} | nivel ${difficulty}`);
-
-      // Pool completo mezclado — garantiza NO repetir hasta agotar todas
-      this.shuffledStimuli      = this.shuffleArray(filtered);
-      this.usedStimuliIndices   = [];          // ← nuevo: índices ya usados en esta sesión
-      this.currentStimulusIndex = 0;
-
-      this.gameStartTime = Date.now();
-      this.startGameTimer();
-      await this.createSession();
-
-      DOMUtils.hide(this.elements.startScreen);
-      DOMUtils.show(this.elements.gameScreen);
-
-      const info = document.getElementById('activeSessionInfo');
-      if (info) info.textContent =
-        `${this.studentName} | ${this.currentLanguage.toUpperCase()} | Sem. ${this.weekNumber} | Nivel ${difficulty}`;
-
-      await this.loadNextQuestion();
-    } catch (e) {
-      Logger.error('Error iniciando juego', e);
-      alert('Error iniciando. Intenta de nuevo.');
-      DOMUtils.hideLoading();
-    }
-  }
-
-  // ============================================================
-  // SELECCIÓN SIN REPETICIÓN
-  // Al agotar el pool completo se vuelve a mezclar (nunca repite
-  // dentro de una ronda de N palabras disponibles).
-  // ============================================================
-  selectRandomStimulus() {
-    // Si ya usamos todas las palabras disponibles, reiniciar pool
-    if (this.currentStimulusIndex >= this.shuffledStimuli.length) {
-      this.shuffledStimuli      = this.shuffleArray(this.shuffledStimuli);
-      this.currentStimulusIndex = 0;
-      Logger.log('🔄 Pool agotado — re-mezclando para nueva ronda');
-    }
-
-    // Tomar la siguiente del pool (ya mezclado, sin saltar)
-    this.currentStimulus = this.shuffledStimuli[this.currentStimulusIndex++];
-    Logger.log(`▶ "${this.currentStimulus.word}" (${this.currentStimulusIndex}/${this.shuffledStimuli.length}) | dif:${this.currentStimulus.difficulty}`);
-  }
-  // ============================================================
   // CHANGE LANGUAGE (durante el juego)
   // ============================================================
   async changeLanguage(lang) {
@@ -882,10 +813,23 @@ loadFallbackData() {
       if (!box) {
         box = document.createElement('div');
         box.id = 'emojiContainerGame1';
-        box.style.cssText = 'font-size:130px;text-align:center;margin-bottom:16px;';
+        box.style.cssText = 'text-align:center;margin-bottom:16px;min-height:140px;display:flex;align-items:center;justify-content:center;';
         this.elements.stimulusImage.parentNode.insertBefore(box, this.elements.stimulusImage);
       }
-      box.textContent = this.getEmojiForWord(this.currentStimulus.word);
+      
+      // Usar ImageManager si está disponible, sino fallback a emojis
+      if (window.imageManager) {
+        const imgEl = imageManager.getImageElement(
+          this.currentStimulus.word,
+          this.currentLanguage || 'es',
+          { width: 150, height: 150, fallbackEmoji: this.getEmojiForWord(this.currentStimulus.word) }
+        );
+        box.innerHTML = '';
+        box.appendChild(imgEl);
+      } else {
+        box.textContent = this.getEmojiForWord(this.currentStimulus.word);
+      }
+      
       this.elements.stimulusWord.textContent = this.currentStimulus.word;
       this.createSyllableButtons();
       await new Promise(r => setTimeout(r, 600));
@@ -1181,7 +1125,7 @@ loadFallbackData() {
     // URL incluye code, lang y difficulty para que game2 los lea
     div.innerHTML = `
       <h3 class="next-game-title">🎮 ¿Listo para el siguiente?</h3>
-      <p class="next-game-text">Juego 2: Memoria Mágica</p>
+      <p class="next-game-text">Juego 2: Memoria de Trabajo</p>
       <a href="game2.html?code=${this.studentCode}&lang=${this.currentLanguage}&diff=${this.currentDifficulty}"
          class="btn-next-game">
         <span class="btn-icon">▶️</span>

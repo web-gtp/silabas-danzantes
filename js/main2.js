@@ -1,5 +1,5 @@
 // frontend/js/main2.js
-// Punto de entrada de la aplicación - Juego 2: Memoria Mágica
+// Punto de entrada de la aplicación - Juego 2: Memoria de Trabajo Secuencial
 
 // Ocultar spinner al inicio
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log('🚀 Iniciando Memoria Mágica (Juego 2)...');
+  console.log('🚀 Iniciando Memoria de Trabajo Secuencial (Juego 2)...');
 
   try {
     // Esperar a que Firebase esté inicializado
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log('✅ Firebase autenticado');
 
     // Crear instancia del juego 2
-    const game = new MemoriaMagicaGame();
+    const game = new MemoriaTrabajoGame();
 
     // Inicializar juego
     await game.init();
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Hacer instancia global para debugging
     window.game2 = game;
 
-    console.log('🧠 Memoria Mágica listo para jugar');
+    console.log('🧠 Memoria de Trabajo Secuencial listo para jugar');
 
   } catch (error) {
     console.error('❌ Error iniciando Juego 2:', error);
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     document.body.innerHTML = `
       <div style="text-align: center; padding: 40px; font-family: Arial, sans-serif;">
-        <h1>❌ Error al cargar Memoria Mágica</h1>
+        <h1>❌ Error al cargar Memoria de Trabajo</h1>
         <p>${error.message}</p>
         <button onclick="location.reload()" style="padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 10px;">
           🔄 Recargar página

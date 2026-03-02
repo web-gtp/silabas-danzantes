@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ============================================
+    // REGLAS DE SEGURIDAD PARA SÍLABAS DANZANTES
+    // ============================================
+    
+    // Permitir lectura/escritura a usuarios autenticados (anónimos incluidos)
+    // Las reglas expiran el 31 de diciembre de 2026
+    
+    // ESTUDIANTES: crear y actualizar su propio documento
+    match /students/{studentCode} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null;
+    }
+    
+    // SESIONES: crear y actualizar sesiones de juego
+    match /sessions/{sessionId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null;
+      
+      // RESPUESTAS dentro de sesiones
+      match /responses/{responseId} {
+        allow read: if request.auth != null;
+        allow create: if request.auth != null;
+      }
+    }
+    
+    // ESTÍMULOS: solo lectura (se cargan desde admin o seedData)
+    match /stimuli/{stimulusId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Solo desde admin/backend
+    }
+    
+    // CONFIGURACIÓN: solo lectura
+    match /config/{configId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+  }
+}

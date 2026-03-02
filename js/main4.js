@@ -1,5 +1,5 @@
 // frontend/js/main4.js
-// Punto de entrada de la aplicación - Juego 4: Rimas Divertidas
+// Punto de entrada de la aplicación - Juego 4: Palabras Saltarinas (Reconocimiento Rápido)
 
 // Ocultar spinner al inicio
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log('🚀 Iniciando Rimas Divertidas (Juego 4)...');
+  console.log('🚀 Iniciando Palabras Saltarinas (Juego 4)...');
 
   try {
     // Esperar a que Firebase esté inicializado
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log('✅ Firebase autenticado');
 
     // Crear instancia del juego 4
-    const game = new RimasDivertidasGame();
+    const game = new PalabrasSaltarinasGame();
 
     // Inicializar juego
     await game.init();
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Hacer instancia global para debugging
     window.game4 = game;
 
-    console.log('🎵 Rimas Divertidas listo para jugar');
+    console.log('⚡ Palabras Saltarinas listo para jugar');
     console.log('🎉 ¡Este es el último juego de los 4!');
 
   } catch (error) {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     document.body.innerHTML = `
       <div style="text-align: center; padding: 40px; font-family: Arial, sans-serif;">
-        <h1>❌ Error al cargar Rimas Divertidas</h1>
+        <h1>❌ Error al cargar Palabras Saltarinas</h1>
         <p>${error.message}</p>
         <button onclick="location.reload()" style="padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 10px;">
           🔄 Recargar página

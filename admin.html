@@ -75,10 +75,74 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <main class="admin-main">
-      
-      <!-- SECCIÓN: ESTADÍSTICAS R��PIDAS -->
+
+      <!-- ═══════════════════════════════════════════
+           CONTEXTO DEL ESTUDIO (PARA REVISORES)
+           ═══════════════════════════════════════════ -->
+      <section class="thesis-banner">
+        <div class="thesis-banner-content">
+          <h2 class="thesis-banner-title">🎓 Contexto de la Investigación</h2>
+          <p class="thesis-banner-text">
+            <strong>Tesis:</strong> Maestría en Educación Virtual con Concentración en Neurociencia — Broward International University (BIU)
+          </p>
+          <p class="thesis-banner-text">
+            <strong>Estudio:</strong> Diseño cuasi-experimental pre-test/post-test con 25 estudiantes de primer grado (5-7 años), intervención de 8 semanas con 4 juegos neuroeducativos digitales bilingües (español-inglés).
+          </p>
+          <div class="thesis-hypotheses">
+            <h3>Hipótesis del Estudio:</h3>
+            <div class="hypothesis-list">
+              <div class="hypothesis-item h1">
+                <span class="hypothesis-badge">H1</span>
+                <span class="hypothesis-text"><strong>Mejora general:</strong> Los juegos digitales neuroeducativos mejoran significativamente las habilidades de lectoescritura emergente (comparación pre-test vs. post-test con prueba t pareada y Cohen's d).</span>
+              </div>
+              <div class="hypothesis-item h2">
+                <span class="hypothesis-badge">H2</span>
+                <span class="hypothesis-text"><strong>Comparación entre constructos:</strong> No hay diferencia significativa entre los 4 constructos medidos (ANOVA de medidas repetidas comparando tamaños de efecto entre juegos).</span>
+              </div>
+              <div class="hypothesis-item h3">
+                <span class="hypothesis-badge">H3</span>
+                <span class="hypothesis-text"><strong>Transferencia interlingüística:</strong> Existe transferencia de habilidades entre L1 (español) y L2 (inglés), medida por correlación de Pearson entre rendimiento ES e EN.</span>
+              </div>
+            </div>
+          </div>
+          <div class="thesis-constructs">
+            <h3>Constructos Medidos por Juego:</h3>
+            <div class="construct-grid">
+              <div class="construct-card">
+                <span class="construct-game">Juego 1</span>
+                <strong>Sílabas Danzantes</strong>
+                <span class="construct-label">Conciencia Fonológica (CF)</span>
+                <small>Segmentación silábica: % aciertos pre vs post</small>
+              </div>
+              <div class="construct-card">
+                <span class="construct-game">Juego 2</span>
+                <strong>Memoria de Trabajo</strong>
+                <span class="construct-label">Working Memory Span (MT)</span>
+                <small>Span secuencial máximo: MaxSpan pre vs post</small>
+              </div>
+              <div class="construct-card">
+                <span class="construct-game">Juego 3</span>
+                <strong>Palabras Secretas</strong>
+                <span class="construct-label">Decodificación Grafema-Fonema</span>
+                <small>Completar letras faltantes: % aciertos pre vs post</small>
+              </div>
+              <div class="construct-card">
+                <span class="construct-game">Juego 4</span>
+                <strong>Palabras Saltarinas</strong>
+                <span class="construct-label">Reconocimiento de Palabras (WPM)</span>
+                <small>Palabras reconocidas por minuto: WPM pre vs post</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════
+           ESTADÍSTICAS RÁPIDAS
+           ═══════════════════════════════════════════ -->
       <section class="stats-section">
         <h2 class="section-title">📈 Estadísticas Generales</h2>
+        <p class="section-help">Resumen de la muestra y participación. Se actualiza automáticamente desde Firebase.</p>
         
         <div class="stats-grid">
           <div class="stat-card">
@@ -107,55 +171,89 @@
         </div>
       </section>
 
-      <!-- SECCIÓN: EXPORTACIÓN DE DATOS -->
+      <!-- ═══════════════════════════════════════════
+           EXPORTACIÓN DE DATOS
+           ═══════════════════════════════════════════ -->
       <section class="export-section">
         <h2 class="section-title">💾 Exportar Datos</h2>
+        <p class="section-help">Descarga los datos en formato Excel (.xlsx) compatible con SPSS. Cada exportación indica qué hipótesis puede evaluarse con esos datos.</p>
         
         <div class="export-options">
           
-          <!-- OPCIÓN 1: DATOS COMPLETOS -->
+          <!-- DATOS COMPLETOS -->
           <div class="export-card">
-            <div class="export-icon">📋</div>
+            <div class="export-card-header">
+              <div class="export-icon">📋</div>
+              <div class="hypothesis-tags">
+                <span class="htag h1">H1</span>
+                <span class="htag h2">H2</span>
+                <span class="htag h3">H3</span>
+              </div>
+            </div>
             <h3 class="export-title">Datos Completos (Todas las Variables)</h3>
             <p class="export-description">
-              Incluye: demografía, pre-test, post-test, diferencias, tamaños efecto.
-              <br><strong>Formato:</strong> Excel (.xlsx) compatible con SPSS
+              Archivo principal para el análisis estadístico. Contiene 6 hojas:
             </p>
+            <ul class="export-details">
+              <li><strong>Hoja 1 – Datos Completos:</strong> Demografía + pre-test + post-test + diferencias (Diff) + tamaño de efecto (Cohen's d) para cada juego</li>
+              <li><strong>Hoja 2 – Crecimiento:</strong> Datos longitudinales semana a semana para analizar curvas de aprendizaje</li>
+              <li><strong>Hoja 3 – Respuestas Ítem:</strong> Cada respuesta individual para análisis de dificultad de ítems</li>
+              <li><strong>Hoja 4 – Descriptivos:</strong> Media, desviación estándar, mínimo, máximo de cada variable</li>
+              <li><strong>Hoja 5 – Diccionario:</strong> Nombre SPSS, descripción y tipo de cada variable</li>
+              <li><strong>Hoja 6 – Instrucciones SPSS:</strong> Pasos detallados para importar y analizar en SPSS</li>
+            </ul>
             <button id="btnExportAll" class="btn-export btn-export--primary">
               <span class="btn-icon">📥</span>
               <span class="btn-text">Descargar Datos Completos</span>
             </button>
           </div>
 
-          <!-- OPCIÓN 2: POR JUEGO -->
+          <!-- POR JUEGO -->
           <div class="export-card">
-            <div class="export-icon">🎮</div>
+            <div class="export-card-header">
+              <div class="export-icon">🎮</div>
+              <div class="hypothesis-tags">
+                <span class="htag h1">H1</span>
+                <span class="htag h2">H2</span>
+              </div>
+            </div>
             <h3 class="export-title">Datos por Juego Individual</h3>
             <p class="export-description">
-              Selecciona un juego específico para análisis detallado.
+              Para analizar cada constructo por separado. Útil para la prueba t pareada de <strong>H1</strong> 
+              y para comparación entre juegos en <strong>H2</strong>.
             </p>
             <div class="game-buttons">
               <button id="btnExportGame1" class="btn-export btn-export--game1">
-                Juego 1: Emociones
+                <span class="game-btn-label">Juego 1: Sílabas (CF)</span>
+                <span class="game-btn-construct">Conciencia Fonológica</span>
               </button>
               <button id="btnExportGame2" class="btn-export btn-export--game2">
-                Juego 2: Memoria
+                <span class="game-btn-label">Juego 2: Memoria (MT)</span>
+                <span class="game-btn-construct">Working Memory Span</span>
               </button>
               <button id="btnExportGame3" class="btn-export btn-export--game3">
-                Juego 3: Palabras
+                <span class="game-btn-label">Juego 3: Decodificación</span>
+                <span class="game-btn-construct">Grafema-Fonema</span>
               </button>
               <button id="btnExportGame4" class="btn-export btn-export--game4">
-                Juego 4: Rimas
+                <span class="game-btn-label">Juego 4: Reconocimiento (WPM)</span>
+                <span class="game-btn-construct">Palabras por Minuto</span>
               </button>
             </div>
           </div>
 
-          <!-- OPCIÓN 3: RESPUESTAS INDIVIDUALES -->
+          <!-- RESPUESTAS INDIVIDUALES -->
           <div class="export-card">
-            <div class="export-icon">📝</div>
+            <div class="export-card-header">
+              <div class="export-icon">📝</div>
+              <div class="hypothesis-tags">
+                <span class="htag h1">H1</span>
+              </div>
+            </div>
             <h3 class="export-title">Respuestas Individuales (Item-Level)</h3>
             <p class="export-description">
-              Datos ítem por ítem de cada respuesta para análisis detallado.
+              Cada ítem contestado por cada estudiante. Permite análisis de dificultad de ítems,
+              patrones de error y análisis detallado de <strong>H1</strong> por tipo de estímulo.
             </p>
             <button id="btnExportResponses" class="btn-export btn-export--secondary">
               <span class="btn-icon">📥</span>
@@ -163,12 +261,19 @@
             </button>
           </div>
 
-          <!-- OPCIÓN 4: DEMOGRAFÍA -->
+          <!-- DEMOGRAFÍA -->
           <div class="export-card">
-            <div class="export-icon">👤</div>
+            <div class="export-card-header">
+              <div class="export-icon">👤</div>
+              <div class="hypothesis-tags">
+                <span class="htag covar">Covariables</span>
+              </div>
+            </div>
             <h3 class="export-title">Solo Datos Demográficos</h3>
             <p class="export-description">
-              Género, NSE, idioma, exposición lectura/pantalla, ADHD.
+              Variables de control: género, nivel socioeconómico (NSE), idioma dominante, 
+              exposición a lectura y pantalla, diagnóstico ADHD. Se usan como <strong>covariables</strong> 
+              en ANCOVA para verificar que no confundan los resultados.
             </p>
             <button id="btnExportDemo" class="btn-export btn-export--secondary">
               <span class="btn-icon">📥</span>
@@ -179,9 +284,12 @@
         </div>
       </section>
 
-      <!-- SECCIÓN: VISTA PREVIA -->
+      <!-- ═══════════════════════════════════════════
+           VISTA PREVIA
+           ═══════════════════════════════════════════ -->
       <section class="preview-section">
         <h2 class="section-title">👁️ Vista Previa de Datos</h2>
+        <p class="section-help">Verifica visualmente que los datos se estén recopilando correctamente antes de exportar.</p>
         
         <div class="preview-controls">
           <button id="btnLoadPreview" class="btn-preview">
@@ -195,9 +303,12 @@
         </div>
       </section>
 
-      <!-- SECCIÓN: FILTROS AVANZADOS -->
+      <!-- ═══════════════════════════════════════════
+           FILTROS AVANZADOS  
+           ═══════════════════════════════════════════ -->
       <section class="filters-section">
         <h2 class="section-title">🔍 Filtros Avanzados</h2>
+        <p class="section-help">Filtra los datos antes de exportar. Útil para exportar solo sesiones de un período o idioma específico.</p>
         
         <div class="filters-grid">
           
@@ -236,40 +347,249 @@
         </div>
       </section>
 
-      <!-- SECCIÓN: INSTRUCCIONES -->
+      <!-- ═══════════════════════════════════════════
+           DATOS DIBELS — Validez Convergente Externa
+           ═══════════════════════════════════════════ -->
+      <section class="dibels-section">
+        <div class="dibels-header-row">
+          <h2 class="section-title">📐 Datos DIBELS (Pre/Post)</h2>
+          <div class="hypothesis-tags">
+            <span class="htag validity">Validez Convergente</span>
+          </div>
+        </div>
+
+        <div class="dibels-explanation">
+          <div class="dibels-qa">
+            <div class="dibels-qa-item">
+              <strong>📋 ¿Qué es DIBELS?</strong>
+              <p><em>Dynamic Indicators of Basic Early Literacy Skills</em> — es una batería de evaluación estandarizada internacionalmente reconocida (University of Oregon) que mide habilidades de lectoescritura emergente en niños de Kinder a 3.° grado. Es la herramienta más usada en EE.UU. para monitoreo de progreso en lectura temprana.</p>
+            </div>
+            <div class="dibels-qa-item">
+              <strong>🎯 ¿Para qué se usa aquí?</strong>
+              <p>Como <strong>medida externa de validez convergente</strong>. Si los juegos de la plataforma miden correctamente lo que dicen medir (conciencia fonológica, decodificación, etc.), entonces las puntuaciones de los juegos deberían <strong>correlacionar positivamente</strong> con los subtests DIBELS correspondientes. Por ejemplo: un niño con alto puntaje en Juego 1 (sílabas) debería también tener alto PSF en DIBELS.</p>
+            </div>
+            <div class="dibels-qa-item">
+              <strong>👩‍🏫 ¿Quién llena estos datos?</strong>
+              <p>El <strong>investigador o docente</strong> que aplique la evaluación DIBELS de forma individual a cada niño. DIBELS NO se genera automáticamente — es una prueba presencial que el docente administra con materiales impresos del kit DIBELS 8th Edition, cronómetro en mano.</p>
+            </div>
+            <div class="dibels-qa-item">
+              <strong>📝 ¿De dónde sale la información que se digita?</strong>
+              <p>De las <strong>hojas de puntuación impresas de DIBELS</strong>. El docente evalúa a cada niño individualmente (1-2 minutos por subtest), marca las respuestas en la hoja de registro, cuenta los aciertos, y luego <strong>digita manualmente</strong> la puntuación total de cada subtest aquí. Cada valor es un número entero = respuestas correctas en 1 minuto.</p>
+            </div>
+            <div class="dibels-qa-item">
+              <strong>⏰ ¿Cuándo se aplica?</strong>
+              <p><strong>PRE-test:</strong> Semana 1, ANTES de que los niños comiencen a usar los juegos.<br>
+              <strong>POST-test:</strong> Semana 8, DESPUÉS de completar las 8 semanas de intervención con los juegos.<br>
+              Así se mide si hubo mejora en las habilidades evaluadas externamente.</p>
+            </div>
+            <div class="dibels-qa-item">
+              <strong>📊 ¿Cómo se interpreta?</strong>
+              <p>Se espera que las puntuaciones POST sean <strong>mayores</strong> que las PRE (el niño mejoró). La diferencia POST-PRE indica la ganancia. Luego se correlacionan con las puntuaciones de los juegos para verificar validez. Un valor de correlación <strong>r > 0.30 con p < .05</strong> indica validez convergente aceptable.</p>
+            </div>
+          </div>
+          <button id="btnDibelsInfo" class="btn-info" type="button">ℹ️ Ver detalles técnicos de cada subtest</button>
+        </div>
+
+        <!-- MODAL DIBELS INFO -->
+        <div id="dibelsModal" class="modal-overlay" hidden>
+          <div class="modal-content">
+            <button class="modal-close" id="btnCloseDibelsModal">&times;</button>
+            <h3>📐 Subtests DIBELS y su Relación con los Juegos</h3>
+            <p>Cada subtest DIBELS mide una habilidad específica. A continuación se explica qué mide cada uno y con qué juego de la plataforma se relaciona.</p>
+            <div class="modal-grid">
+              <div class="modal-card">
+                <strong>LNF</strong> – Letter Naming Fluency<br>
+                <small>Letras que el niño nombra correctamente en 1 minuto.</small><br>
+                <small><strong>Rango esperado 1.° grado:</strong> 25-65 letras/min</small><br>
+                <small>🔗 Relacionado con: <em>Juego 1 (Conciencia Fonológica)</em></small>
+              </div>
+              <div class="modal-card">
+                <strong>FSF</strong> – First Sound Fluency<br>
+                <small>Sonidos iniciales identificados correctamente en 1 min.</small><br>
+                <small><strong>Rango esperado 1.° grado:</strong> 20-50 sonidos/min</small><br>
+                <small>🔗 Relacionado con: <em>Juego 1 (Conciencia Fonológica)</em></small>
+              </div>
+              <div class="modal-card">
+                <strong>PSF</strong> – Phoneme Segmentation Fluency<br>
+                <small>Fonemas segmentados correctamente en 1 minuto.</small><br>
+                <small><strong>Rango esperado 1.° grado:</strong> 25-55 fonemas/min</small><br>
+                <small>🔗 Relacionado con: <em>Juego 1 (Segmentación silábica)</em></small>
+              </div>
+              <div class="modal-card">
+                <strong>NWF-CLS</strong> – Nonsense Word Fluency (Correct Letter Sounds)<br>
+                <small>Sonidos de letras correctos al leer pseudopalabras.</small><br>
+                <small><strong>Rango esperado 1.° grado:</strong> 25-70 CLS/min</small><br>
+                <small>🔗 Relacionado con: <em>Juego 3 (Decodificación)</em></small>
+              </div>
+              <div class="modal-card">
+                <strong>NWF-WRC</strong> – Nonsense Word Fluency (Words Recombined Correctly)<br>
+                <small>Pseudopalabras leídas como unidad completa.</small><br>
+                <small><strong>Rango esperado 1.° grado:</strong> 5-25 palabras/min</small><br>
+                <small>🔗 Relacionado con: <em>Juego 3 (Decodificación)</em></small>
+              </div>
+              <div class="modal-card">
+                <strong>ORF</strong> – Oral Reading Fluency (opcional)<br>
+                <small>Palabras leídas correctamente por minuto en un pasaje.</small><br>
+                <small><strong>Rango esperado 1.° grado:</strong> 10-60 WCPM</small><br>
+                <small>🔗 Relacionado con: <em>Juego 4 (Reconocimiento/WPM)</em></small>
+              </div>
+            </div>
+            <h4>Cómo ingresar datos:</h4>
+            <ol>
+              <li>Selecciona el estudiante del dropdown</li>
+              <li>Ingresa las puntuaciones PRE-test (antes de la intervención, semana 1)</li>
+              <li>Ingresa las puntuaciones POST-test (después de la intervención, semana 8)</li>
+              <li>Haz clic en "Guardar" para almacenar en Firebase</li>
+              <li>Los datos se incluirán automáticamente en la exportación SPSS</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- FORMULARIO DIBELS -->
+        <div class="dibels-form">
+          <div class="form-group">
+            <label class="filter-label">Estudiante</label>
+            <select id="dibelsStudentSelect" class="filter-select">
+              <option value="">-- Selecciona un estudiante --</option>
+            </select>
+          </div>
+
+          <div class="dibels-grid">
+            <!-- COLUMNA PRE-TEST -->
+            <div class="dibels-col dibels-col-pre">
+              <h4 class="dibels-col-title">📝 PRE-Test <small>(Semana 1 — antes de intervención)</small></h4>
+
+              <div class="form-group">
+                <label>LNF — Letras nombradas por minuto</label>
+                <input type="number" id="dibels_pre_lnf" class="dibels-input" min="0" max="200" placeholder="ej: 40">
+                <span class="input-helper">Rango típico 1.° grado: 25-65</span>
+              </div>
+              <div class="form-group">
+                <label>FSF — Sonidos iniciales por minuto</label>
+                <input type="number" id="dibels_pre_fsf" class="dibels-input" min="0" max="200" placeholder="ej: 30">
+                <span class="input-helper">Rango típico 1.° grado: 20-50</span>
+              </div>
+              <div class="form-group">
+                <label>PSF — Fonemas segmentados por minuto</label>
+                <input type="number" id="dibels_pre_psf" class="dibels-input" min="0" max="200" placeholder="ej: 35">
+                <span class="input-helper">Rango típico 1.° grado: 25-55</span>
+              </div>
+              <div class="form-group">
+                <label>NWF-CLS — Sonidos correctos en pseudopalabras</label>
+                <input type="number" id="dibels_pre_nwf_cls" class="dibels-input" min="0" max="300" placeholder="ej: 40">
+                <span class="input-helper">Rango típico 1.° grado: 25-70</span>
+              </div>
+              <div class="form-group">
+                <label>NWF-WRC — Pseudopalabras leídas completas</label>
+                <input type="number" id="dibels_pre_nwf_wrc" class="dibels-input" min="0" max="100" placeholder="ej: 12">
+                <span class="input-helper">Rango típico 1.° grado: 5-25</span>
+              </div>
+              <div class="form-group">
+                <label>ORF — Palabras correctas por minuto <em>(opcional)</em></label>
+                <input type="number" id="dibels_pre_orf" class="dibels-input" min="0" max="300" placeholder="ej: 20">
+                <span class="input-helper">Rango típico 1.° grado: 10-60 WCPM</span>
+              </div>
+            </div>
+
+            <!-- COLUMNA POST-TEST -->
+            <div class="dibels-col dibels-col-post">
+              <h4 class="dibels-col-title">📝 POST-Test <small>(Semana 8 — después de intervención)</small></h4>
+
+              <div class="form-group">
+                <label>LNF — Letras nombradas por minuto</label>
+                <input type="number" id="dibels_post_lnf" class="dibels-input" min="0" max="200" placeholder="ej: 55">
+                <span class="input-helper">Se espera aumento respecto al PRE</span>
+              </div>
+              <div class="form-group">
+                <label>FSF — Sonidos iniciales por minuto</label>
+                <input type="number" id="dibels_post_fsf" class="dibels-input" min="0" max="200" placeholder="ej: 42">
+                <span class="input-helper">Se espera aumento respecto al PRE</span>
+              </div>
+              <div class="form-group">
+                <label>PSF — Fonemas segmentados por minuto</label>
+                <input type="number" id="dibels_post_psf" class="dibels-input" min="0" max="200" placeholder="ej: 48">
+                <span class="input-helper">Se espera aumento respecto al PRE</span>
+              </div>
+              <div class="form-group">
+                <label>NWF-CLS — Sonidos correctos en pseudopalabras</label>
+                <input type="number" id="dibels_post_nwf_cls" class="dibels-input" min="0" max="300" placeholder="ej: 58">
+                <span class="input-helper">Se espera aumento respecto al PRE</span>
+              </div>
+              <div class="form-group">
+                <label>NWF-WRC — Pseudopalabras leídas completas</label>
+                <input type="number" id="dibels_post_nwf_wrc" class="dibels-input" min="0" max="100" placeholder="ej: 20">
+                <span class="input-helper">Se espera aumento respecto al PRE</span>
+              </div>
+              <div class="form-group">
+                <label>ORF — Palabras correctas por minuto <em>(opcional)</em></label>
+                <input type="number" id="dibels_post_orf" class="dibels-input" min="0" max="300" placeholder="ej: 35">
+                <span class="input-helper">Se espera aumento respecto al PRE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dibels-actions">
+            <button id="btnSaveDibels" class="btn-export btn-export--primary" type="button">
+              💾 Guardar DIBELS
+            </button>
+            <span id="dibelsSaveStatus" class="save-status"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════
+           GUÍA PARA EL REVISOR
+           ═══════════════════════════════════════════ -->
       <section class="instructions-section">
-        <h2 class="section-title">📖 Instrucciones de Uso</h2>
+        <h2 class="section-title">📖 Guía de Uso para el Revisor</h2>
+        <p class="section-help">Pasos recomendados para revisar y analizar los datos de esta investigación.</p>
         
         <div class="instructions-content">
           <div class="instruction-step">
             <div class="step-number">1</div>
             <div class="step-content">
-              <h4>Selecciona tipo de exportación</h4>
-              <p>Para análisis completo en SPSS, usa "Datos Completos"</p>
+              <h4>Verificar la muestra</h4>
+              <p>Revisa las estadísticas generales arriba. Debe haber ~25 estudiantes con al menos una sesión PRE y una POST para cada juego.</p>
             </div>
           </div>
 
           <div class="instruction-step">
             <div class="step-number">2</div>
             <div class="step-content">
-              <h4>Descarga el archivo Excel</h4>
-              <p>Se descargará automáticamente un archivo .xlsx</p>
+              <h4>Descargar "Datos Completos"</h4>
+              <p>Este archivo Excel contiene 6 hojas con toda la información necesaria para el análisis en SPSS. La hoja "Instrucciones SPSS" explica paso a paso qué análisis ejecutar.</p>
             </div>
           </div>
 
           <div class="instruction-step">
             <div class="step-number">3</div>
             <div class="step-content">
-              <h4>Abre en Excel o SPSS</h4>
-              <p>El formato está optimizado para importación directa en SPSS</p>
+              <h4>Para H1 — Prueba t pareada</h4>
+              <p>En SPSS: Analizar → Comparar medias → Prueba t para muestras relacionadas. Comparar columnas Pre vs Post de cada juego. Un valor p &lt; .05 confirma mejora significativa.</p>
             </div>
           </div>
 
           <div class="instruction-step">
             <div class="step-number">4</div>
             <div class="step-content">
-              <h4>Variables Pre-Configuradas</h4>
-              <p>Todas las variables están etiquetadas según estándar SPSS</p>
+              <h4>Para H2 — ANOVA de medidas repetidas</h4>
+              <p>En SPSS: Analizar → Modelo Lineal General → Medidas repetidas. Factor intrasujeto = "Juego" (4 niveles). Variable = tamaño de efecto (Cohen's d). Un p > .05 sugiere que los juegos mejoran de forma similar.</p>
+            </div>
+          </div>
+
+          <div class="instruction-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h4>Para H3 — Correlación ES↔EN</h4>
+              <p>En SPSS: Analizar → Correlación → Bivariada (Pearson). Correlacionar puntuaciones ES vs EN para cada juego. Una correlación significativa (r > .30, p &lt; .05) sugiere transferencia interlingüística.</p>
+            </div>
+          </div>
+
+          <div class="instruction-step">
+            <div class="step-number">6</div>
+            <div class="step-content">
+              <h4>DIBELS — Validez convergente</h4>
+              <p>Correlacionar puntuaciones de los juegos con subtests DIBELS correspondientes (J1↔PSF, J3↔NWF, J4↔ORF). Una correlación positiva confirma que los juegos miden correctamente el constructo.</p>
             </div>
           </div>
         </div>
@@ -279,7 +599,7 @@
 
     <!-- FOOTER -->
     <footer class="admin-footer">
-      <p>Panel de Administración | BIU 2026 | Versión 1.0</p>
+      <p>Sílabas Danzantes — Panel de Administración | BIU 2026 | Tesis Maestría Neuroeducación | v1.1</p>
     </footer>
 
   </div>
