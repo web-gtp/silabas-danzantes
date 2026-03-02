@@ -86,7 +86,7 @@
             <strong>Tesis:</strong> Maestría en Educación Virtual con Concentración en Neurociencia — Broward International University (BIU)
           </p>
           <p class="thesis-banner-text">
-            <strong>Estudio:</strong> Diseño cuasi-experimental pre-test/post-test con 25 estudiantes de primer grado (5-7 años), intervención de 8 semanas con 4 juegos neuroeducativos digitales bilingües (español-inglés).
+            <strong>Estudio:</strong> Diseño cuasi-experimental pre-test/post-test con 25 estudiantes de primer grado (5-7 años), intervención de 10 semanas con 4 juegos neuroeducativos digitales bilingües (español-inglés).
           </p>
           <div class="thesis-hypotheses">
             <h3>Hipótesis del Estudio:</h3>
@@ -379,7 +379,7 @@
             <div class="dibels-qa-item">
               <strong>⏰ ¿Cuándo se aplica?</strong>
               <p><strong>PRE-test:</strong> Semana 1, ANTES de que los niños comiencen a usar los juegos.<br>
-              <strong>POST-test:</strong> Semana 8, DESPUÉS de completar las 8 semanas de intervención con los juegos.<br>
+              <strong>POST-test:</strong> Semana 10, DESPUÉS de completar las 10 semanas de intervención con los juegos.<br>
               Así se mide si hubo mejora en las habilidades evaluadas externamente.</p>
             </div>
             <div class="dibels-qa-item">
@@ -438,18 +438,54 @@
             <ol>
               <li>Selecciona el estudiante del dropdown</li>
               <li>Ingresa las puntuaciones PRE-test (antes de la intervención, semana 1)</li>
-              <li>Ingresa las puntuaciones POST-test (después de la intervención, semana 8)</li>
+              <li>Ingresa las puntuaciones POST-test (después de la intervención, semana 10)</li>
               <li>Haz clic en "Guardar" para almacenar en Firebase</li>
               <li>Los datos se incluirán automáticamente en la exportación SPSS</li>
             </ol>
           </div>
         </div>
 
+        <!-- PASO A PASO VISUAL -->
+        <div class="dibels-steps">
+          <h3 class="dibels-steps-title">📋 Paso a paso — Cómo llenar este formulario</h3>
+          <p class="dibels-steps-note">Se llena <strong>estudiante por estudiante</strong>. Repite estos pasos para cada uno de los 25 niños.</p>
+          <div class="dibels-steps-grid">
+            <div class="dibels-step">
+              <div class="dibels-step-num">1</div>
+              <div class="dibels-step-text">
+                <strong>Aplica DIBELS presencialmente</strong>
+                <p>Sienta al niño 1 a 1. Usa el kit impreso de DIBELS 8th Edition. Cronometra 1 minuto por subtest. Marca aciertos en la hoja de registro.</p>
+              </div>
+            </div>
+            <div class="dibels-step">
+              <div class="dibels-step-num">2</div>
+              <div class="dibels-step-text">
+                <strong>Selecciona el estudiante</strong>
+                <p>Elige del dropdown al niño que acabas de evaluar. La lista se llena automáticamente con los estudiantes registrados en los juegos.</p>
+              </div>
+            </div>
+            <div class="dibels-step">
+              <div class="dibels-step-num">3</div>
+              <div class="dibels-step-text">
+                <strong>Digita las puntuaciones</strong>
+                <p>Copia el número total de aciertos de cada subtest desde la hoja impresa al campo correspondiente (PRE o POST según corresponda).</p>
+              </div>
+            </div>
+            <div class="dibels-step">
+              <div class="dibels-step-num">4</div>
+              <div class="dibels-step-text">
+                <strong>Guarda y pasa al siguiente</strong>
+                <p>Haz clic en "Guardar DIBELS". Luego selecciona otro estudiante y repite. Los datos se guardan en Firebase por estudiante.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- FORMULARIO DIBELS -->
         <div class="dibels-form">
-          <div class="form-group">
+          <div class="dibels-form-group">
             <label class="filter-label">Estudiante</label>
-            <select id="dibelsStudentSelect" class="filter-select">
+            <select id="dibelsStudentSelect" class="dibels-select">
               <option value="">-- Selecciona un estudiante --</option>
             </select>
           </div>
@@ -493,7 +529,7 @@
 
             <!-- COLUMNA POST-TEST -->
             <div class="dibels-col dibels-col-post">
-              <h4 class="dibels-col-title">📝 POST-Test <small>(Semana 8 — después de intervención)</small></h4>
+              <h4 class="dibels-col-title">📝 POST-Test <small>(Semana 10 — después de intervención)</small></h4>
 
               <div class="form-group">
                 <label>LNF — Letras nombradas por minuto</label>

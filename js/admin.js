@@ -405,7 +405,7 @@ class AdminPanel {
 prepareCompleteData() {
   const data = [];
   
-  // Total de sesiones programadas: 8 semanas * 2 idiomas * 4 juegos = 64
+  // Total de sesiones programadas: 10 semanas * 2 idiomas * 4 juegos = 80
   const TOTAL_SESIONES_PROGRAMADAS = 64;
   
   for (let student of this.allStudents) {
@@ -835,7 +835,7 @@ calculateCohenD(preSession, postSession, field) {
       {
         Paso: 15,
         Instruccion: 'Curva de crecimiento (opcional)',
-        Detalle: 'Importar hoja "Crecimiento_Sesion" en archivo SPSS separado. Analyze > Mixed Models > Linear. VD: Precision/MaxSpan/WPM. Factor fijo: Numero_Sesion. Evaluar tendencia de mejora a lo largo de las 8 semanas.'
+        Detalle: 'Importar hoja "Crecimiento_Sesion" en archivo SPSS separado. Analyze > Mixed Models > Linear. VD: Precision/MaxSpan/WPM. Factor fijo: Numero_Sesion. Evaluar tendencia de mejora a lo largo de las 10 semanas.'
       },
       {
         Paso: 16,
@@ -1102,7 +1102,7 @@ getVariablesDictionary() {
     // ===== ENGAGEMENT =====
     { Variable: 'Engagement_Score', Descripcion: 'Porcentaje de sesiones completadas vs programadas', Tipo: 'Escala', Valores: '0-100' },
     { Variable: 'Total_Sesiones_Completadas', Descripcion: 'Número de sesiones realizadas', Tipo: 'Escala', Valores: '0-64' },
-    { Variable: 'Total_Sesiones_Programadas', Descripcion: 'Total de sesiones esperadas (8 semanas x 2 idiomas x 4 juegos)', Tipo: 'Constante', Valores: '64' },
+    { Variable: 'Total_Sesiones_Programadas', Descripcion: 'Total de sesiones esperadas (10 semanas x 2 idiomas x 4 juegos)', Tipo: 'Constante', Valores: '80' },
     { Variable: 'Completo_4_Juegos', Descripcion: 'Completó los 4 juegos (0=No, 1=Sí)', Tipo: 'Nominal', Valores: '0, 1' }
   ];
 }
